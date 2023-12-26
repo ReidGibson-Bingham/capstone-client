@@ -1,0 +1,45 @@
+.terminal {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #000;
+    color: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    width: 50%;
+    height: 500px;
+    margin: 1rem;
+    margin-top: 50px;
+    overflow: hidden;
+  }
+  
+  .output {
+    max-height: calc(100% - 40px);
+    margin-bottom: 16px;
+    overflow: auto; /* Add this line to add a scrollbar when content exceeds max-height */
+  }
+  
+  .input-container {
+    display: flex;
+    border-bottom: 1px dashed green;
+  }
+  
+  .prompt {
+    color: #00ff00;
+    margin-right: 8px;
+  }
+  
+  input {
+    flex: 1;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .input {
+    color: #00ff00;
+  }
+  
+  .output {
+    color: #fff;
+  }
