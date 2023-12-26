@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './Search.scss';
+import './ResultList.scss';
 
 const Terminal = () => {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState([]);
   const outputContainerRef = useRef(null);
-  const [isInputFocused, setIsInputFocused] = useState(false);
 
   useEffect(() => {
     // Scroll to the bottom of the output container when output changes
@@ -16,7 +15,6 @@ const Terminal = () => {
 
   const handleInputChange = (e) => {
     setInput(e.target.value);
-    setIsInputFocused(true)
   };
 
   const handleEnter = (e) => {
@@ -30,7 +28,6 @@ const Terminal = () => {
     if (input === 'clear') {
       setOutput(['']);
     }
-    setIsInputFocused(false)
   };
 
   const processCommand = (command) => {
@@ -38,7 +35,7 @@ const Terminal = () => {
     const newOutput = [
       ...output,
       { type: 'input', text: command },
-      { type: 'output', text: `Search: ${command}` },
+      { type: 'output', text: `Command: ${command}` },
     ];
 
     setOutput(newOutput);
@@ -47,7 +44,7 @@ const Terminal = () => {
   };
 
   return (
-    <div className="search">
+    <div className="terminal">
       <div className="output" ref={outputContainerRef}>
         {output.map((item, index) => (
           <div key={index} className={item.type}>
@@ -56,15 +53,13 @@ const Terminal = () => {
         ))}
       </div>
       <div className="input-container">
-        <span className="prompt">{isInputFocused ? '>' : '$'}</span>
+        <span className="prompt">$</span>
         <input
           type="text"
           name="search"
           value={input}
           onChange={handleInputChange}
           onKeyPress={handleEnter}
-          onFocus={() => setIsInputFocused(false)}
-          onBlur={() => setIsInputFocused(false)}
         />
       </div>
     </div>

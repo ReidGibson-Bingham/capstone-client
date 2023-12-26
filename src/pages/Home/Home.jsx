@@ -1,4 +1,5 @@
 import Search from "../../components/Search/Search";
+import ResultList from "./../../components/ResultList/ResultList";
 import './Home.scss';
 
 const Home = () => {
@@ -6,7 +7,7 @@ const Home = () => {
         <>
             <main className="home">
                 <Search/>
-                <Search/>
+                <ResultList/>
             </main>
         </>
         
