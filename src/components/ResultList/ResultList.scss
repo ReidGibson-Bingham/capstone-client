@@ -1,14 +1,45 @@
-.terminal {
-    font-family: 'Courier New', Courier, monospace;
+@import './../../styles/partials/mixins';
+
+.results {
+
+    position: relative; // Add position relative for positioning context
+
+
+    font-family: "Courier New", Courier, monospace;
     background-color: #000;
     color: #fff;
-    padding: 16px;
+    padding: 1rem;
     border-radius: 8px;
-    width: 50%;
-    height: auto;
-    margin: 1rem;
-    margin-top: 50px;
+    width: 75vw;
+    height: 65vh;
+    /* margin: 1rem; */
     overflow: hidden;
+
+    background: url('./../../assets/noise/Standard_Scientific_Camera_Starfield_450.jpg') center center no-repeat rgba(0, 0, 0, 0.891);
+    background-size: cover;
+
+    // &::before {
+    //     content: '';
+    //     position: absolute;
+    //     top: 0;
+    //     right: 0;
+    //     bottom: 0;
+    //     left: 0;
+    //     background-color: rgba(0, 0, 0, 0.1); // Adjust the color and opacity as needed
+    // }
+    
+    @include tablet { 
+        font-family: "Courier New", Courier, monospace;
+        background-color: #000;
+        color: #fff;
+        padding: 16px;
+        border-radius: 8px;
+        width: 50vw;
+        height: 100vh;
+        margin: 1rem;
+        /* margin-top: 50px; */
+        overflow: hidden;
+    }
   }
   
   .output {

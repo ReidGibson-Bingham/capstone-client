@@ -1,15 +1,36 @@
+@import './../../styles/partials/mixins';
+
 .search {
-    font-family: 'Courier New', Courier, monospace;
+
+  font-family: "Courier New", Courier, monospace;
+    font-size: 1rem;
+    background-color: #000;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 75vw;
+    height: 35vh;
+    margin: 1rem 0rem;
+    margin-top: 3rem;
+    /* margin-top: 50px; */
+  overflow: hidden;
+  
+
+  @include tablet {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1rem;
     background-color: #000;
     color: #fff;
     padding: 16px;
     border-radius: 8px;
-    width: 50%;
-    height: 500px;
+    width: 40vw;
+    height: 40vh;
     margin: 1rem;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     overflow: hidden;
   }
+
+}
   
   .output {
     max-height: calc(100% - 40px);

@@ -6,7 +6,13 @@ const Home = () => {
     return (
         <>
             <main className="home">
-                <Search/>
+                <span className="home__mobile--search">
+                    <Search/>
+                </span>
+                <div className="home__tablet--search">
+                    <Search/>
+                    <Search/>
+                </div>
                 <ResultList/>
             </main>
         </>

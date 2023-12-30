@@ -44,7 +44,7 @@ const Terminal = () => {
   };
 
   return (
-    <div className="terminal">
+    <div className="results">
       <div className="output" ref={outputContainerRef}>
         {output.map((item, index) => (
           <div key={index} className={item.type}>
