@@ -14,9 +14,10 @@
     margin-top: 3rem;
     /* margin-top: 50px; */
     overflow: hidden;
-    background: url('./../../assets/noise/old-tv-glitch-vhs-rewind-fuzzy-grain-mov-1854328-high_0014.avif') center center no-repeat;
-    background: url('./../../assets/noise/Standard_Scientific_Camera_Starfield_450.jpg') center center no-repeat rgba(0, 0, 0, 0.891);
+    // background: url('./../../assets/noise/old-tv-glitch-vhs-rewind-fuzzy-grain-mov-1854328-high_0014.avif') center center no-repeat;
+    // background: url('./../../assets/noise/bad-tracking-vhs-noise-footage-096624524_iconl.webp') center center no-repeat rgba(0, 0, 0, 0.891);
     background-size: cover;
+    border: 5px dashed rgb(83 0 128 / 43%);
   
 
   @include tablet {

@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home/Home'
-import './App.scss'
+import Favourites from './pages/Favourites/Favourites'
+import SearchHistory from './pages/SearchHistory/SearchHistory'
 import Header from './components/Header/Header'
+import './App.scss'
 
 // to do: 
 // create header
@@ -18,6 +20,8 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home/>} />
+            <Route path="/favourites" element={<Favourites/>} />
+            <Route path="/history" element={<SearchHistory/>} />
           </Routes>
         </BrowserRouter>
 

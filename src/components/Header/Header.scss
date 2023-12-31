@@ -9,24 +9,14 @@
 
     display: flex;
     padding: 1rem;
+    padding-bottom: 3rem;
     flex-direction: column;
     align-items: center;
     position: relative;
     
-    // width: 100%;
-    background: url('./../../assets/noise/1000_F_393065300_z0GbhH3qSS6kNIJoHRaA3BR4RfbutAyi.jpg') center center no-repeat;
+    background: linear-gradient(to bottom, rgba(58, 0, 128, 0), rgb(57 0 128 / 30%)), url(/src/assets/noise/360_F_393065300_z0GbhH3qSS6kNIJoHRaA3BR4RfbutAyi.webp) center center no-repeat;
     background-size: cover;
-    background-color: $navHeader;
-
-    // &::before {
-    //     content: '';
-    //     position: absolute;
-    //     top: 0;
-    //     right: 0;
-    //     bottom: 0;
-    //     left: 0;
-    //     background-color: rgba(0, 0, 0, 0.5); // Adjust the color and opacity as needed
-    // }
+    background-color: #232940;
 
 
     @include tablet {
