@@ -16,7 +16,9 @@
     overflow: hidden;
 
     background: url('./../../assets/noise/Standard_Scientific_Camera_Starfield_450.jpg') center center no-repeat rgba(0, 0, 0, 0.891);
+    // background: url('./../../assets/noise/old-tv-glitch-vhs-rewind-fuzzy-grain-mov-1854328-high_0014.avif') center center no-repeat;
     background-size: cover;
+    margin-bottom: 3rem;
 
     // &::before {
     //     content: '';
@@ -56,6 +58,7 @@
   .prompt {
     color: #00ff00;
     margin-right: 8px;
+    font-size: 36px;
   }
   
   input {
