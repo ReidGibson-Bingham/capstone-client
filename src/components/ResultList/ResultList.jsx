@@ -1,10 +1,31 @@
 import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 import './ResultList.scss';
 
 const Terminal = () => {
+
   const [input, setInput] = useState('');
   const [output, setOutput] = useState([]);
   const outputContainerRef = useRef(null);
+  const [productData, setProductData] = useState([]);
+
+  useEffect(() => {
+
+    const getData = async () => {
+
+        try {
+            const response = await axios.get('http://localhost:8080/api/products');
+            setProductData(response.data);
+            console.log("the response from the server: ", response.data);
+        } catch (error) {
+            console.log("error fetching data: ", error);
+        }
+
+    }
+
+    getData();
+
+  }, [])
 
   useEffect(() => {
     // Scroll to the bottom of the output container when output changes
@@ -46,11 +67,21 @@ const Terminal = () => {
   return (
     <div className="results">
       <div className="output" ref={outputContainerRef}>
-        {output.map((item, index) => (
+        {/* {output.map(( item, index) => (
           <div key={index} className={item.type}>
             {item.text}
           </div>
-        ))}
+        ))} */}
+        {
+            productData.map((product, index) => (
+                <div key={index} className='output'>
+                    <div className='results__money-sign'>$</div>
+                    - {product.title}
+                    <div></div>
+                    - {product.price}
+                </div>
+            ))
+        }
       </div>
       <div className="input-container">
         <span className="prompt">$</span>
