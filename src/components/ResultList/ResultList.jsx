@@ -10,11 +10,11 @@ Modal.setAppElement('#root');
 const ItemModal = ({ isOpen, onRequestClose, item }) => {
 
   // couldn't target this with the css so this was the best i could figure out on how to change the background color
-//   const modalStyle = {
-//     overlay: {
-//       backgroundColor: '#13182cc7',
-//     }
-//   };
+  const modalStyle = {
+    overlay: {
+      backgroundColor: '#13182cc7',
+    }
+  };
 
   return (
     <Modal
@@ -31,7 +31,7 @@ const ItemModal = ({ isOpen, onRequestClose, item }) => {
         afterOpen: 'deletion-modal__overlay',
         beforeClose: 'deletion-modal__overlay',
       }}
-    //   style={modalStyle}
+      style={modalStyle}
     >
       <div>
         <div className='deletion-modal__close-button-box'>
@@ -39,12 +39,27 @@ const ItemModal = ({ isOpen, onRequestClose, item }) => {
             X
           </button>
         </div>
-        <h2 className='deletion-modal__title'>Delete {item} Inventory Item?</h2>
-        <p className='deletion-modal__message'>Please confirm that you’d like to delete {item} from the inventory list. You won’t be able to undo this action.</p>
-        <div className='deletion-modal__button-box'>
+
+        <div className='deletion-modal__info-container'>
+
+        <img className='deletion-modal__img' src={item.imagePath} alt='detailed product modal image'></img>
+        <div>
+            <h2 className='deletion-modal__title'>{item.title}</h2>
+            <p className='deletion-modal__message'>price: {item.price}</p>
+            <p className='deletion-modal__message'>brand: {item.brand}</p>
+            <p className='deletion-modal__message-link'>where to buy / further info:
+                <a href={item.itemURL} target="_blank">
+                    {item.itemURL}
+                </a>
+            </p>
+        </div>
+
+        </div>
+
+        {/* <div className='deletion-modal__button-box'>
           <button className='deletion-modal__button-cancel' onClick={onRequestClose}>Cancel</button>
           <button className='deletion-modal__button-delete' >Delete</button>
-        </div>
+        </div> */}
       </div>
       
     </Modal>
@@ -122,8 +137,8 @@ const Terminal = () => {
                     <ItemModal
                         isOpen={isModalOpen && selectedProduct === product}
                         onRequestClose={() => {closeModal()}}
-                        item={product.title}
-                    />  
+                        item={product}
+                    />
 
                 </div>
                 

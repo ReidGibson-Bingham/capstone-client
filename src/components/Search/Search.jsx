@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Search.scss';
 
-const Terminal = () => {
+const Search = (props) => {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState([]);
   const outputContainerRef = useRef(null);
@@ -31,6 +31,7 @@ const Terminal = () => {
       setOutput(['']);
     }
     setIsInputFocused(false)
+    props.setSearchTerm(input)
   };
 
   const processCommand = (command) => {
@@ -71,4 +72,4 @@ const Terminal = () => {
   );
 };
 
-export default Terminal;
+export default Search;
