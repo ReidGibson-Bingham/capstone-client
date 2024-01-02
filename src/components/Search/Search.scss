@@ -3,7 +3,7 @@
 .search {
 
   font-family: "Courier New", Courier, monospace;
-    font-size: 1rem;
+    font-size: 1.5rem;
     background-color: #000;
     color: #fff;
     padding: 1rem;
@@ -40,6 +40,7 @@
     max-height: calc(100% - 40px);
     margin-bottom: 16px;
     overflow: auto; /* Add this line to add a scrollbar when content exceeds max-height */
+    font-size: 1.5rem;
   }
   
   .input-container {
@@ -48,8 +49,9 @@
   }
   
   .prompt {
-    color: #00ff00;
+    color: green;
     margin-right: 8px;
+    font-size: 48px;
   }
   
   input {

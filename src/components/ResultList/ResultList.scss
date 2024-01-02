@@ -3,8 +3,6 @@
 .results {
 
     position: relative; // Add position relative for positioning context
-
-
     font-family: "Courier New", Courier, monospace;
     background-color: #000;
     color: #fff;
@@ -19,17 +17,7 @@
     // background: url('./../../assets/noise/old-tv-glitch-vhs-rewind-fuzzy-grain-mov-1854328-high_0014.avif') center center no-repeat;
     background-size: cover;
     margin-bottom: 3rem;
-    border: 5px dashed rgb(83 0 128 / 43%);
-
-    // &::before {
-    //     content: '';
-    //     position: absolute;
-    //     top: 0;
-    //     right: 0;
-    //     bottom: 0;
-    //     left: 0;
-    //     background-color: rgba(0, 0, 0, 0.1); // Adjust the color and opacity as needed
-    // }
+    border: 5px dashed #00ff0063;
     
     @include tablet { 
         font-family: "Courier New", Courier, monospace;
@@ -44,42 +32,64 @@
         overflow: hidden;
     }
 
+    &__item-box {
+        max-height: calc(100% - 40px);
+        margin-bottom: 16px;
+        overflow: auto; /* Add this line to add a scrollbar when content exceeds max-height */
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;  // Add this to vertically center the content
+        padding: 1rem;
+        // border: 2px dotted #fff; 
+    }
+
     &__money-sign {
         font-size: 48px;
         color: green;
     }
+
+    &__item-title {
+        color: green;
+        font-size: 24px;   
+        list-style-type: '$';
+    }
+
+    &__item-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        list-style-type: none;
+    }
+
   }
   
-  .output {
-    max-height: calc(100% - 40px);
-    margin-bottom: 16px;
-    overflow: auto; /* Add this line to add a scrollbar when content exceeds max-height */
-  }
+//   .input-container {
+//     display: flex;
+//     border-bottom: 1px dashed green;
+//   }
   
-  .input-container {
-    display: flex;
-    border-bottom: 1px dashed green;
-  }
+//   .prompt {
+//     color: #00ff00;
+//     margin-right: 8px;
+//     font-size: 36px;
+//   }
   
-  .prompt {
-    color: #00ff00;
-    margin-right: 8px;
-    font-size: 36px;
-  }
+//   input {
+//     flex: 1;
+//     background-color: transparent;
+//     border: none;
+//     outline: none;
+//     color: #fff;
+//     font-family: 'Courier New', Courier, monospace;
+//   }
   
-  input {
-    flex: 1;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    color: #fff;
-    font-family: 'Courier New', Courier, monospace;
-  }
+//   .input {
+//     color: #00ff00;
+//   }
   
-  .input {
-    color: #00ff00;
-  }
-  
-  .output {
-    color: #fff;
-  }
+//   .output {
+//     color: #fff;
+//   }

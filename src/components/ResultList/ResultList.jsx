@@ -66,24 +66,22 @@ const Terminal = () => {
 
   return (
     <div className="results">
-      <div className="output" ref={outputContainerRef}>
-        {/* {output.map(( item, index) => (
-          <div key={index} className={item.type}>
-            {item.text}
-          </div>
-        ))} */}
+      <div className="results__item-box" ref={outputContainerRef}>
         {
             productData.map((product, index) => (
-                <div key={index} className='output'>
-                    <div className='results__money-sign'>$</div>
-                    - {product.title}
-                    <div></div>
-                    - {product.price}
+                <div key={index} className='results__item'>
+
+                    <ul className='results__item-info'>
+                        <li><span className='results__item-title'>$Product </span> = {product.title}</li>
+                        <li><span className='results__item-title'>$Price </span> = {product.price}</li>
+                        <li><span className='results__item-title'>$Brand </span> = {product.brand}</li>
+                    </ul>
+                    
                 </div>
             ))
         }
       </div>
-      <div className="input-container">
+      {/* <div className="input-container">
         <span className="prompt">$</span>
         <input
           type="text"
@@ -92,7 +90,7 @@ const Terminal = () => {
           onChange={handleInputChange}
           onKeyPress={handleEnter}
         />
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -37,8 +37,8 @@ const Terminal = () => {
     // For simplicity, let's just echo the command for now
     const newOutput = [
       ...output,
-      { type: 'input', text: command },
-      { type: 'output', text: `Search: ${command}` },
+      { type: 'input', text: 'Search' },
+      { type: 'output', text: `${command}` },
     ];
 
     setOutput(newOutput);
