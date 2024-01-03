@@ -7,25 +7,31 @@ const Home = () => {
 
     const [searchTerm, setSearchTerm] = useState('');
 
+    const handleChange = (newValue) => {
+        setSearchTerm(newValue);
+    };
+
     useEffect(() => {
-        console.log("the searchTerm is: ", searchTerm)
-    }, [setSearchTerm])
+        console.log("the searchTerm from the Search component to the Home Page is: ", searchTerm)
+    }, [searchTerm])
 
     return (
         <>
             <main className="home">
                 <span className="home__mobile--search">
                     <Search
-                        setSearchTerm={setSearchTerm}
+                        onChange={handleChange}
                     />
                 </span>
                 <div className="home__tablet--search">
                     <Search
-                        setSearchTerm={setSearchTerm}
+                        onChange={handleChange}
                     />
                     <Search/>
                 </div>
-                <ResultList/>
+                <ResultList
+                    searchTerm={searchTerm}
+                />
             </main>
         </>
         

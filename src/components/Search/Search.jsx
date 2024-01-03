@@ -23,7 +23,8 @@ const Search = (props) => {
     if (e.key === 'Enter') {
       // Handle the entered command (e.g., execute a command or show a response)
       processCommand(input);
-
+      
+      props.onChange(input)
       // Clear the input field
       setInput('');
     }
@@ -31,7 +32,6 @@ const Search = (props) => {
       setOutput(['']);
     }
     setIsInputFocused(false)
-    props.setSearchTerm(input)
   };
 
   const processCommand = (command) => {

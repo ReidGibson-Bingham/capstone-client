@@ -66,7 +66,7 @@ const ItemModal = ({ isOpen, onRequestClose, item }) => {
   );
 };
 
-const Terminal = () => {
+const Terminal = (props) => {
 
   const [input, setInput] = useState('');
   const [output, setOutput] = useState([]);
@@ -82,10 +82,8 @@ const Terminal = () => {
   };
 
   const closeModal = () => {
-    console.log("Before closing - isModalOpen:", isModalOpen, "selectedProduct:", selectedProduct);
     setIsModalOpen(false);
     setSelectedProduct(null);
-    console.log("After closing - isModalOpen:", isModalOpen, "selectedProduct:", selectedProduct);
   };
 
   useEffect(() => {
@@ -94,8 +92,25 @@ const Terminal = () => {
 
         try {
             const response = await axios.get('http://localhost:8080/api/products');
-            setProductData(response.data);
-            console.log("the response from the server: ", response.data);
+            // Extract numeric values from the price strings
+            const extractNumber = (priceString) => {
+                const matches = priceString.match(/[0-9,]+[.]?[0-9]*/);
+                if (matches && matches.length > 0) {
+                return parseFloat(matches[0].replace(/,/g, ''));
+                }
+                return 0; // Default value if no numeric value is found
+            };
+  
+            // Sort based on the extracted numeric values
+            const sortedProductData = response.data.sort((a, b) => {
+                const aPrice = extractNumber(a.price);
+                const bPrice = extractNumber(b.price);
+                return aPrice - bPrice;
+            });
+
+            setProductData(sortedProductData);
+  
+            console.log("the response from the server: ", sortedProductData);
         } catch (error) {
             console.log("error fetching data: ", error);
         }
@@ -104,7 +119,7 @@ const Terminal = () => {
 
     getData();
 
-  }, [])
+  }, [props.searchTerm])
 
   useEffect(() => {
     // Scroll to the bottom of the output container when output changes
@@ -117,7 +132,13 @@ const Terminal = () => {
     <div className="results">
       <div className="results__item-box" ref={outputContainerRef}>
         {
-            productData.map((product, index) => (
+            productData
+                .filter(product => {
+                    const formattedTitle = product.title.toLowerCase().replace(/\s/g, '');
+                    const formattedSearchTerm = props.searchTerm.toLowerCase().replace(/\s/g, '');
+                    return formattedTitle.includes(formattedSearchTerm) || product.brand.toLowerCase().includes(formattedSearchTerm);
+                })
+                .map((product, index) => (
                 
                 <div key={index} className='results__item'>
 
