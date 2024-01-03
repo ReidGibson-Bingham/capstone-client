@@ -135,9 +135,10 @@ const Terminal = (props) => {
             productData
                 .filter(product => {
                     const formattedTitle = product.title.toLowerCase().replace(/\s/g, '');
+                    const formattedBrand = product.brand.toLowerCase().replace(/\s/g, '');
                     const formattedSearchTerm = props.searchTerm.toLowerCase().replace(/\s/g, '');
-                    return formattedTitle.includes(formattedSearchTerm) || product.brand.toLowerCase().includes(formattedSearchTerm);
-                })
+                    return formattedTitle.includes(formattedSearchTerm) || formattedBrand.includes(formattedSearchTerm);
+                }) // Filter products based on the case-insensitive and space-insensitive search for title and brand
                 .map((product, index) => (
                 
                 <div key={index} className='results__item'>
