@@ -1,0 +1,68 @@
+@import './../../styles/partials/mixins';
+
+.favourites-list {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1rem;
+    background-color: #000;
+    color: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    width: 80vw;
+    height: 40vh;
+    margin: 1rem;
+    /* margin-top: 50px; */
+    overflow: hidden;
+
+    background: url('./../../assets/noise/Standard_Scientific_Camera_Starfield_450.jpg') center center no-repeat rgba(0, 0, 0, 0.891);
+    // background: url('./../../assets/noise/old-tv-glitch-vhs-rewind-fuzzy-grain-mov-1854328-high_0014.avif') center center no-repeat;
+    background-size: cover;
+    margin-bottom: 3rem;
+    border: 5px dashed #00ff0063;
+    
+    @include tablet { 
+        font-family: "Courier New", Courier, monospace;
+        background-color: #000;
+        color: #fff;
+        padding: 16px;
+        border-radius: 8px;
+        width: 80vw;
+        height: 70vh;
+        margin: 1rem;
+        /* margin-top: 50px; */
+        overflow: hidden;
+    }
+
+    &__item-box {
+        max-height: calc(100% - 40px);
+        margin-bottom: 16px;
+        overflow: auto; /* Add this line to add a scrollbar when content exceeds max-height */
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;  // Add this to vertically center the content
+        padding: 1rem;
+        // border: 2px dotted #fff; 
+    }
+
+    &__item-img {
+        max-width: 300px;
+        height: 200px;
+        border: 3px dotted white;
+    }
+
+    &__item-title {
+        color: green;
+        font-size: 24px;   
+        list-style-type: '$';
+    }
+
+    &__item-info {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        list-style-type: none;
+    }
+
+}
