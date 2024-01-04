@@ -39,14 +39,14 @@ const Header = () => {
                         className={`header__pages-name ${isActiveHome('/') ? 'header__pages-name--active' : ''}`}
                         onClick={() => handlePageClick('/')}
                     >
-                        Warehouses
+                        Home
                     </NavLink>
                     <NavLink
                         to="/favourites"
                         className={`header__pages-name ${isActiveFavourites('/favourites') ? 'header__pages-name--active' : ''}`}
                         onClick={() => handlePageClick('favourites')}
                     >
-                        Inventory
+                        Favourites
                     </NavLink>
                 </section>
         </header>
