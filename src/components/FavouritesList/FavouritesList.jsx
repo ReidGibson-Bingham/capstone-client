@@ -63,7 +63,6 @@ const ItemModal = ({ isOpen, onRequestClose, item }) => {
 
 const FavouritesList = (props) => {
 
-  const [input, setInput] = useState('');
   const [output, setOutput] = useState([]);
   const outputContainerRef = useRef(null);
   const [productData, setProductData] = useState([]);
@@ -71,7 +70,6 @@ const FavouritesList = (props) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const openModal = (product) => {
-    console.log("openModal function engaged. ")
     setSelectedProduct(product);
     setIsModalOpen(true);
   };
@@ -83,36 +81,32 @@ const FavouritesList = (props) => {
 
   useEffect(() => {
 
-    const getData = async () => {
-
+    const getItems = async (itemIds) => {
+      let resData = [];  // Create a new array to hold the updated data
+  
+      for (const id of itemIds) {
         try {
-            const response = await axios.get('http://localhost:8080/api/products');
-            // Extract numeric values from the price strings
-            const extractNumber = (priceString) => {
-                const matches = priceString.match(/[0-9,]+[.]?[0-9]*/);
-                if (matches && matches.length > 0) {
-                return parseFloat(matches[0].replace(/,/g, ''));
-                }
-                return 0; // Default value if no numeric value is found
-            };
-  
-            // Sort based on the extracted numeric values
-            const sortedProductData = response.data.sort((a, b) => {
-                const aPrice = extractNumber(a.price);
-                const bPrice = extractNumber(b.price);
-                return aPrice - bPrice;
-            });
-
-            setProductData(sortedProductData);
-  
-            console.log("the response from the server: ", sortedProductData);
+          const response = await axios.get(`http://localhost:8080/api/products/${id}`);
+          resData = [...resData, response.data];
         } catch (error) {
-            console.log("error fetching data: ", error);
+          console.log("frontend error fetching individual product: ", error);
         }
+      }
+  
+      setProductData(resData);
+    };
+    
+    const getUserFavouriteIds = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/api/users/favourites');
+        getItems(response.data);
 
+      } catch (error) {
+        console.log("frontend error fetching favourite Ids", error);
+      }
     }
 
-    getData();
+    getUserFavouriteIds();
 
   }, [])
 
@@ -126,9 +120,9 @@ const FavouritesList = (props) => {
   return (
     <div className="favourites-list">
       <div className="favourites-list__item-box" ref={outputContainerRef}>
+        <h1 className='favourites-list__title'>$Favourites</h1>
         {
             productData
-                .slice(400, 450)
                 .map((product, index) => (
                 
                 <div key={index} className='favourites-list__item'>

@@ -121,65 +121,57 @@
         }
     }
 
-    // &__button-box {
-    //     height: 70.5vh;
-    //     display: flex;
-    //     align-items: flex-end;
-    //     justify-content: space-between;
+    &__button-box {
+        height: 70.5vh;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
 
-    //     @media screen and (min-width: 364px) {
-    //         height: 70.5vh;
-    //     }
+        @include tablet {
+            height: 0vh;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            gap: 1rem;
+            padding-right: 2rem;
+        }
 
-    //     @media screen and (min-width: 425px) {
-    //         height: 73.5vh;
-    //     }
+        @media screen and (min-width: 1160px) {
+            height: 14.5vh;
+        }
 
-    //     @include tablet {
-    //         height: 11vh;
-    //         display: flex;
-    //         align-items: flex-end;
-    //         justify-content: flex-end;
-    //         gap: 1rem;
-    //         padding-right: 2rem;
-    //     }
+        @include desktop {
+            height: 10.5vh;
+        }
 
-    //     @media screen and (min-width: 1160px) {
-    //         height: 14.5vh;
-    //     }
+    }
 
-    //     @include desktop {
-    //         height: 10.5vh;
-    //     }
+    &__button-cancel {
+        width: 47%;
+        border-radius: 1rem;
+        border: none;
+        height: 2rem;
 
-    // }
+        @include tablet {
+            width: 14%;
+        }
 
-    // &__button-cancel {
-    //     width: 47%;
-    //     border-radius: 1rem;
-    //     border: none;
-    //     height: 2rem;
+    }
 
-    //     @include tablet {
-    //         width: 14%;
-    //     }
+    &__button-delete {
+        color: white;
+        background-color: #C94515;
+        width: 47%;
+        border-radius: 1rem;
+        border: none;
+        height: 2rem;
 
-    // }
-
-    // &__button-delete {
-    //     color: white;
-    //     background-color: #C94515;
-    //     width: 47%;
-    //     border-radius: 1rem;
-    //     border: none;
-    //     height: 2rem;
-
-    //     @include tablet {
+        @include tablet {
             
-    //         width: 14%;
+            width: 14%;
             
-    //     }
+        }
 
-    // }
+    }
 
 }

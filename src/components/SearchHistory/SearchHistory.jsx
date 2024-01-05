@@ -32,8 +32,7 @@ const SearchHistory = (props) => {
             });
 
             setProductData(sortedProductData);
-  
-            console.log("the response from the server: ", sortedProductData);
+
         } catch (error) {
             console.log("error fetching data: ", error);
         }
