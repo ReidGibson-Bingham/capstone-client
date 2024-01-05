@@ -129,8 +129,19 @@ const Terminal = (props) => {
     }
   }, [output]);
 
-  const handleSave = () => {
-    console.log(`the selected product:  ${selectedProduct}. the selected product id: ${selectedProduct.id}`);
+  const handleSave = async () => {
+    const favouriteId = { favouriteId: selectedProduct.id};
+    console.log("favourite id: ", favouriteId);
+    try {   
+        const response = await axios.post('http://localhost:8080/api/users/favourites/',favouriteId);
+        if (response.status === 201) {
+            console.log("successfully saved new favourite: ", response);
+        } else {
+            console.log("erroneous response: ", response);
+        }
+    } catch (error) {
+        console.log("frontend error saving data: ", error);
+    }
   }
 
   return (
