@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Search from "../../components/Search/Search";
 import ResultList from "./../../components/ResultList/ResultList";
+// import frame from './../../assets/border/png-transparent-corner-frame-divider-silver-filigree-wedding-invitations-formal-engagement-party.png'
 import './Home.scss';
 
 const Home = () => {
@@ -24,6 +25,7 @@ const Home = () => {
                     />
                 </span>
                 <div className="home__tablet--search">
+                    {/* <img src={frame} alt="frame image"/> */}
                     <Search
                         onChange={handleChange}
                     />

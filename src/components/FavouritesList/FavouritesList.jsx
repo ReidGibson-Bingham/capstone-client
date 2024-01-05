@@ -7,7 +7,7 @@ import './ItemModal.scss';
 
 Modal.setAppElement('#root');
 
-const ItemModal = ({ isOpen, onRequestClose, item }) => {
+const ItemModal = ({ isOpen, onRequestClose, item, removeItem }) => {
 
   const modalStyle = {
     overlay: {
@@ -55,6 +55,10 @@ const ItemModal = ({ isOpen, onRequestClose, item }) => {
 
         </div>
 
+        <div className='deletion-modal__button-box'>
+          <button className='deletion-modal__button-delete' onClick={removeItem}>Remove</button>
+        </div>
+
       </div>
       
     </Modal>
@@ -68,6 +72,7 @@ const FavouritesList = (props) => {
   const [productData, setProductData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [retriggerFetchData, setRetriggerFetchData] = useState(false);
 
   const openModal = (product) => {
     setSelectedProduct(product);
@@ -108,7 +113,7 @@ const FavouritesList = (props) => {
 
     getUserFavouriteIds();
 
-  }, [])
+  }, [retriggerFetchData])
 
   useEffect(() => {
     // Scroll to the bottom of the output container when output changes
@@ -116,6 +121,32 @@ const FavouritesList = (props) => {
       outputContainerRef.current.scrollTop = outputContainerRef.current.scrollHeight;
     }
   }, [output]);
+
+  const handleRemove = async () => {
+
+    const favouriteId = { favouriteId: selectedProduct.id};
+    console.log("favourite id: ", favouriteId);
+
+    try {
+      const response = await axios.delete('http://localhost:8080/api/users/favourites/', {
+        data: favouriteId  // Include the data in the config object
+    })
+
+      if (response.status === 200) {
+
+        console.log("successfull response: ", response);
+        setRetriggerFetchData(!retriggerFetchData);
+        closeModal();
+        
+      } else {
+        console.log("error removing the favourite item", response);
+      }
+
+    } catch (err) {
+      console.log("frontend error deleting favourite item: ", err);
+    }
+
+  }
 
   return (
     <div className="favourites-list">
@@ -144,6 +175,7 @@ const FavouritesList = (props) => {
                         isOpen={isModalOpen && selectedProduct === product}
                         onRequestClose={() => {closeModal()}}
                         item={product}
+                        removeItem={handleRemove}
                     />
 
                 </div>

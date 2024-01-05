@@ -2,6 +2,7 @@
 
 .search {
 
+    position: relative;
   font-family: "Courier New", Courier, monospace;
     font-size: 1.5rem;
     background-color: #000;
@@ -18,7 +19,8 @@
     // background: url('./../../assets/noise/bad-tracking-vhs-noise-footage-096624524_iconl.webp') center center no-repeat rgba(0, 0, 0, 0.891);
     background-size: cover;
     border: 5px dashed rgb(83 0 128 / 43%);
-  
+
+   
 
   @include tablet {
     font-family: "Courier New", Courier, monospace;
@@ -71,3 +73,15 @@
   .output {
     color: #fff;
   }
+
+  // ::after {
+  //   content: '';
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   right: 0;
+  //   bottom: 0;
+  //   z-index: -1;
+  //   background: url('./../../assets/noise/vhs-noise-real-analog-glitch-tape-rewind-1854378-high_0001.avif') center center no-repeat;
+  //   background-size: cover;
+  // }

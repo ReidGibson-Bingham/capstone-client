@@ -136,6 +136,7 @@ const Terminal = (props) => {
         const response = await axios.post('http://localhost:8080/api/users/favourites/',favouriteId);
         if (response.status === 201) {
             console.log("successfully saved new favourite: ", response);
+            closeModal();
         } else {
             console.log("erroneous response: ", response);
         }
