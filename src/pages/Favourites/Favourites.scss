@@ -2,34 +2,8 @@
 @import './../../styles/partials/mixins';
 
 
-.home {
+.favourites-page {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    // Set background image for the entire page
-    background: url('./../../assets/noise/color-noise.jpg') center center no-repeat;
-    background-size: cover;
-
-    @include tablet {
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: flex-start;
-        padding: 2rem;
-    }
-
-    &__mobile--search {
-
-        @include tablet {
-            display: none;
-        }
-    }
-
-    &__tablet--search {
-        display: none;
-        @include tablet {
-            display: flex;
-            flex-direction: column;
-        }
-    }
 }

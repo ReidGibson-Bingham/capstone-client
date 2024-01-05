@@ -1,10 +1,6 @@
 @import './../../styles/partials/colors';
 @import './../../styles/partials/mixins';
 
-// NavLink {
-//     text-decoration: none;
-// }
-
 .header {
 
     display: flex;
@@ -84,7 +80,7 @@
 
         &--active {
             color: $white;
-            background-color: #13182C;
+            background-color: green;
         }
     }
 }

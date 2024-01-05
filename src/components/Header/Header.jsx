@@ -6,28 +6,21 @@ import { NavLink, useLocation } from "react-router-dom";
 const Header = () => {
 
     const [activePage, setActivePage] = useState(null);
-    // const location = useLocation();
+    const location = useLocation();
 
     const handlePageClick = (pageName) => {
         setActivePage(pageName);
     };
 
-    const isActiveWarehouse = () => {
+    const isActiveHome = () => {
         const isActive =
-            location.pathname === "/warehouses" ||
-            location.pathname.startsWith("/warehouse/") ||
-            location.pathname.startsWith("/editWarehouse/") ||
-            location.pathname.startsWith("/addNewWarehouse") ||
             location.pathname === "/";
         return isActive;
     };
     
-    const isActiveInventories = () => {
+    const isActiveFavourites = () => {
         const isActive =
-            location.pathname === "/inventory" ||
-            location.pathname.startsWith("/inventory/") ||
-            location.pathname.startsWith("/editInventory/") ||
-            location.pathname === "/addInventory";
+            location.pathname === "/favourites";
         return isActive;
     };
 
@@ -35,26 +28,26 @@ const Header = () => {
         <header className="header">
             
                 <section className="header__logo-container">
-                    {/* <NavLink to="/" className="link"> */}
+                    <NavLink to="/" className="link">
                         <img className="header__logo" src={""} alt='header logo image' />
-                    {/* </NavLink> */}
+                    </NavLink>
                 </section>
 
                 <section className="header__pages">
-                    {/* <NavLink
-                        to="/"
-                        className={`header__pages-name ${isActiveWarehouse('/warehouses') ? 'header__pages-name--active' : ''}`}
-                        onClick={() => handlePageClick('Warehouses')}
-                    > */}
-                        Warehouses
-                    {/* </NavLink>
                     <NavLink
-                        to="/inventory"
-                        className={`header__pages-name ${isActiveInventories('/inventory') ? 'header__pages-name--active' : ''}`}
-                        onClick={() => handlePageClick('Inventories')}
-                    > */}
-                        Inventory
-                    {/* </NavLink> */}
+                        to="/"
+                        className={`header__pages-name ${isActiveHome('/') ? 'header__pages-name--active' : ''}`}
+                        onClick={() => handlePageClick('/')}
+                    >
+                        Home
+                    </NavLink>
+                    <NavLink
+                        to="/favourites"
+                        className={`header__pages-name ${isActiveFavourites('/favourites') ? 'header__pages-name--active' : ''}`}
+                        onClick={() => handlePageClick('favourites')}
+                    >
+                        Favourites
+                    </NavLink>
                 </section>
         </header>
     )

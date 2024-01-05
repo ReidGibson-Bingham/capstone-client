@@ -7,9 +7,8 @@ import './ItemModal.scss';
 
 Modal.setAppElement('#root');
 
-const ItemModal = ({ isOpen, onRequestClose, item }) => {
+const ItemModal = ({ isOpen, onRequestClose, item, save }) => {
 
-  // couldn't target this with the css so this was the best i could figure out on how to change the background color
   const modalStyle = {
     overlay: {
       backgroundColor: '#13182cc7',
@@ -33,33 +32,35 @@ const ItemModal = ({ isOpen, onRequestClose, item }) => {
       }}
       style={modalStyle}
     >
-      <div>
-        <div className='deletion-modal__close-button-box'>
-          <button onClick={onRequestClose} className="deletion-modal__close-btn">
-            X
-          </button>
-        </div>
-
-        <div className='deletion-modal__info-container'>
-
-        <img className='deletion-modal__img' src={item.imagePath} alt='detailed product modal image'></img>
+      
         <div>
-            <h2 className='deletion-modal__title'>{item.title}</h2>
-            <p className='deletion-modal__message'>price: {item.price}</p>
-            <p className='deletion-modal__message'>brand: {item.brand}</p>
-            <p className='deletion-modal__message-link'>where to buy / further info:
-                <a href={item.itemURL} target="_blank">
-                    {item.itemURL}
-                </a>
-            </p>
-        </div>
+            <div className='deletion-modal__close-button-box'>
+                <button onClick={onRequestClose} className="deletion-modal__close-btn">
+                    X
+                </button>
+            </div>
+
+            <div className='deletion-modal__info-container'>
+
+            <img className='deletion-modal__img' src={item.imagePath} alt='detailed product modal image'></img>
+            <div>
+                <h2 className='deletion-modal__title'>{item.title}</h2>
+                <p className='deletion-modal__message'>price: {item.price}</p>
+                <p className='deletion-modal__message'>brand: {item.brand}</p>
+                <p className='deletion-modal__message-link'>where to buy / further info:
+                    <a href={item.itemURL} target="_blank">
+                        {item.itemURL}
+                    </a>
+                </p>
+            </div>
+
 
         </div>
 
-        {/* <div className='deletion-modal__button-box'>
-          <button className='deletion-modal__button-cancel' onClick={onRequestClose}>Cancel</button>
-          <button className='deletion-modal__button-delete' >Delete</button>
-        </div> */}
+        <div className='deletion-modal__button-box'>
+          <button className='deletion-modal__button-delete' onClick={save} >Save</button>
+        </div>
+
       </div>
       
     </Modal>
@@ -128,6 +129,21 @@ const Terminal = (props) => {
     }
   }, [output]);
 
+  const handleSave = async () => {
+    const favouriteId = { favouriteId: selectedProduct.id};
+    console.log("favourite id: ", favouriteId);
+    try {   
+        const response = await axios.post('http://localhost:8080/api/users/favourites/',favouriteId);
+        if (response.status === 201) {
+            console.log("successfully saved new favourite: ", response);
+        } else {
+            console.log("erroneous response: ", response);
+        }
+    } catch (error) {
+        console.log("frontend error saving data: ", error);
+    }
+  }
+
   return (
     <div className="results">
       <div className="results__item-box" ref={outputContainerRef}>
@@ -135,9 +151,10 @@ const Terminal = (props) => {
             productData
                 .filter(product => {
                     const formattedTitle = product.title.toLowerCase().replace(/\s/g, '');
+                    const formattedBrand = product.brand.toLowerCase().replace(/\s/g, '');
                     const formattedSearchTerm = props.searchTerm.toLowerCase().replace(/\s/g, '');
-                    return formattedTitle.includes(formattedSearchTerm) || product.brand.toLowerCase().includes(formattedSearchTerm);
-                })
+                    return formattedTitle.includes(formattedSearchTerm) || formattedBrand.includes(formattedSearchTerm);
+                }) // Filter products based on the case-insensitive and space-insensitive search for title and brand
                 .map((product, index) => (
                 
                 <div key={index} className='results__item'>
@@ -159,6 +176,7 @@ const Terminal = (props) => {
                         isOpen={isModalOpen && selectedProduct === product}
                         onRequestClose={() => {closeModal()}}
                         item={product}
+                        save={handleSave}
                     />
 
                 </div>
