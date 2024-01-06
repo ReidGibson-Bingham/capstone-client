@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Search from "../../components/Search/Search";
+import Terminal from "./../../components/Terminal/Terminal";
 import ResultList from "./../../components/ResultList/ResultList";
 // import frame from './../../assets/border/png-transparent-corner-frame-divider-silver-filigree-wedding-invitations-formal-engagement-party.png'
 import './Home.scss';
@@ -29,7 +30,7 @@ const Home = () => {
                     <Search
                         onChange={handleChange}
                     />
-                    <Search/>
+                    <Terminal/>
                 </div>
                 <ResultList
                     searchTerm={searchTerm}
