@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Header from "../../components/Header/Header";
 import Search from "../../components/Search/Search";
 import Terminal from "./../../components/Terminal/Terminal";
 import ResultList from "./../../components/ResultList/ResultList";
@@ -35,6 +36,7 @@ const Home = () => {
 
     return (
         <>
+            <Header/>
             <main className="home">
                 <span className="home__mobile--search">
                     <Search

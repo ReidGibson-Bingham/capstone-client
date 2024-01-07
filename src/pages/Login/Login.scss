@@ -1,0 +1,16 @@
+.login {
+    position: relative; // Set the position of the parent container to relative
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    &__canvas {
+        width: 100%;
+        height: 1200px;
+        background-color: black;
+        color: green;
+    }
+
+}
