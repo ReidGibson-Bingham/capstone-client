@@ -48,6 +48,19 @@ const Header = () => {
                     >
                         Favourites
                     </NavLink>
+
+                    <NavLink
+                        to="/login"
+                    >
+
+                        <div className='header__logout-box'>
+                            <p className='header__logout-image'>
+                                $
+                            </p>
+                        </div>
+
+                    </NavLink>
+
                 </section>
         </header>
     )

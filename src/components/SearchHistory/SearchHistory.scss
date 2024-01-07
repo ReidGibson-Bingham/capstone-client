@@ -42,14 +42,21 @@
         justify-content: center;
     }
 
+    &__item-a {
+        text-decoration: none;
+    }
+
     &__item {
         display: flex;
         flex-direction: row;
-        align-items: center;  // Add this to vertically center the content
+        justify-content: center;
+        align-items: center; // Add this to vertically center the content
         padding: 0.5rem;
         list-style-type: '$';
         text-decoration: none;
         // border: 2px dotted #fff; 
+        color: green;
+        font-size: 32px;
 
         &:hover{
             background-color: rgba(0, 128, 0, 0.227);

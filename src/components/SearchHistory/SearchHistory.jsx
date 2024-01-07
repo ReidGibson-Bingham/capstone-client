@@ -38,28 +38,29 @@ const SearchHistory = (props) => {
 
   return (
     <div className="search-history">
+      <h1 className='search-history__title'>$Search History</h1>
       <div className="search-history__item-box" ref={outputContainerRef}>
-        <h1 className='search-history__title'>$Search History</h1>
+        
         {
             searchHistoryData
                 .map((searchTerm, index) => (
 
                   <NavLink 
+                    key={index}
                     to={{
                       pathname: '/home',
-                      
                     }}
                     state={{navLinkSearchData : searchTerm }}
-                    className='search-history__item'
+                    className='search-history__item-a'
                   >
 
-                  <ul key={index} className='search-history__item'>
+                    <ul className='search-history__item'>
 
-                      <li>{searchTerm}</li>
+                        <li>{searchTerm}</li>
 
-                  </ul>
+                    </ul>
 
-                </NavLink>
+                  </NavLink>
                 
             )).reverse()
         }
