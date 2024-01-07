@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 import './Search.scss';
 
+
 const Search = (props) => {
+
   const [input, setInput] = useState('');
   const [output, setOutput] = useState([]);
   const outputContainerRef = useRef(null);
@@ -12,7 +15,21 @@ const Search = (props) => {
     if (outputContainerRef.current) {
       outputContainerRef.current.scrollTop = outputContainerRef.current.scrollHeight;
     }
+
   }, [output]);
+
+  useEffect(() => {
+
+    if (props.navigated) {
+      const newOutput = [
+        ...output,
+        { type: 'input', text: 'Search' },
+        { type: 'output', text: `${props.navLinkSearchData}` },
+      ];
+      setOutput(newOutput);
+    }
+
+  }, [props.navigated])
 
   const handleInputChange = (e) => {
     setInput(e.target.value);
@@ -25,6 +42,7 @@ const Search = (props) => {
       processCommand(input);
       
       props.onChange(input)
+      console.log("props.onChange used. it's input: ", input);
       // Clear the input field
       setInput('');
     }
@@ -44,7 +62,25 @@ const Search = (props) => {
 
     setOutput(newOutput);
 
-    // You can add more logic here to handle command processing
+    const postSearchTerm = async () => {
+
+      const searchPostData = { searchTerm: command }
+
+      try {
+        const response = await axios.post("http://localhost:8080/api/users/searchHistory", searchPostData)
+        if (response.status === 201) {
+          console.log("successfully saved new favourite: ", response);
+        } else {
+          console.log("erroneous response posting to search history: ", response);
+        }
+      } catch (err) {
+        console.log("the frontend error posting the search term: ", err);
+      }
+
+    }
+
+    postSearchTerm();
+    
   };
 
   return (

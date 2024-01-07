@@ -17,17 +17,16 @@
     // background: url('./../../assets/noise/old-tv-glitch-vhs-rewind-fuzzy-grain-mov-1854328-high_0014.avif') center center no-repeat;
     background-size: cover;
     margin-bottom: 3rem;
-    border: 5px dashed #00ff0063;
     
     @include tablet { 
         font-family: "Courier New", Courier, monospace;
         background-color: #000;
         color: #fff;
-        padding: 16px;
+        padding: 1rem;
         border-radius: 8px;
         width: 50vw;
         height: 100vh;
-        margin: 1rem;
+        margin: 2rem;
         /* margin-top: 50px; */
         overflow: hidden;
     }
@@ -43,7 +42,10 @@
         flex-direction: row;
         align-items: center;  // Add this to vertically center the content
         padding: 1rem;
-        // border: 2px dotted #fff; 
+        // border: 2px dotted #fff;
+        &:hover{
+            background-color: rgba(0, 128, 0, 0.227);
+        } 
     }
 
     &__item-img {

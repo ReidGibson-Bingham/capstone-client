@@ -1,6 +1,6 @@
 @import './../../styles/partials/mixins';
 
-.search {
+.terminal {
 
     position: relative;
     font-family: "Courier New", Courier, monospace;
@@ -30,7 +30,7 @@
     padding: 16px;
     border-radius: 8px;
     width: 30vw;
-    height: 60vh;
+    height: 30vh;
     margin: 1rem;
     /* margin-top: 50px; */
     overflow: hidden;
@@ -43,6 +43,7 @@
     margin-bottom: 16px;
     overflow: auto; /* Add this line to add a scrollbar when content exceeds max-height */
     font-size: 1.5rem;
+    color: #00ff001a;
   }
   
   .input-container {

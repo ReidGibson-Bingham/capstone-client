@@ -14,7 +14,7 @@ const Header = () => {
 
     const isActiveHome = () => {
         const isActive =
-            location.pathname === "/";
+            location.pathname === "/home";
         return isActive;
     };
     
@@ -28,14 +28,14 @@ const Header = () => {
         <header className="header">
             
                 <section className="header__logo-container">
-                    <NavLink to="/" className="link">
+                    <NavLink to="/home" className="link">
                         <img className="header__logo" src={""} alt='header logo image' />
                     </NavLink>
                 </section>
 
                 <section className="header__pages">
                     <NavLink
-                        to="/"
+                        to="/home"
                         className={`header__pages-name ${isActiveHome('/') ? 'header__pages-name--active' : ''}`}
                         onClick={() => handlePageClick('/')}
                     >

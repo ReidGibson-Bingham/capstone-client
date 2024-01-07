@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import { NavLink } from 'react-router-dom';
 import './SearchHistory.scss';
 
 const SearchHistory = (props) => {
@@ -7,34 +8,19 @@ const SearchHistory = (props) => {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState([]);
   const outputContainerRef = useRef(null);
-  const [productData, setProductData] = useState([]);
+  const [searchHistoryData, setSearchHistoryData] = useState([]);
 
   useEffect(() => {
 
     const getData = async () => {
 
         try {
-            const response = await axios.get('http://localhost:8080/api/products');
-            // Extract numeric values from the price strings
-            const extractNumber = (priceString) => {
-                const matches = priceString.match(/[0-9,]+[.]?[0-9]*/);
-                if (matches && matches.length > 0) {
-                return parseFloat(matches[0].replace(/,/g, ''));
-                }
-                return 0; // Default value if no numeric value is found
-            };
-  
-            // Sort based on the extracted numeric values
-            const sortedProductData = response.data.sort((a, b) => {
-                const aPrice = extractNumber(a.price);
-                const bPrice = extractNumber(b.price);
-                return aPrice - bPrice;
-            });
-
-            setProductData(sortedProductData);
+            const response = await axios.get('http://localhost:8080/api/users/searchHistory');
+            console.log("the response.data: ", response.data[0]);
+            setSearchHistoryData(response.data[0]);
 
         } catch (error) {
-            console.log("error fetching data: ", error);
+            console.log("frontend error fetching data: ", error);
         }
 
     }
@@ -53,29 +39,29 @@ const SearchHistory = (props) => {
   return (
     <div className="search-history">
       <div className="search-history__item-box" ref={outputContainerRef}>
+        <h1 className='search-history__title'>$Search History</h1>
         {
-            productData
-                .slice(400, 450)
-                .map((product, index) => (
+            searchHistoryData
+                .map((searchTerm, index) => (
+
+                  <NavLink 
+                    to={{
+                      pathname: '/home',
+                      
+                    }}
+                    state={{navLinkSearchData : searchTerm }}
+                    className='search-history__item'
+                  >
+
+                  <ul key={index} className='search-history__item'>
+
+                      <li>{searchTerm}</li>
+
+                  </ul>
+
+                </NavLink>
                 
-                <div key={index} className='search-history__item'>
-
-                    <img className='search-history__item-img' 
-                        src={product.imagePath}
-                        onClick={() => openModal(product)}
-                    >
-
-                    </img>
-
-                    <ul className='search-history__item-info'>
-                        <li><span className='search-history__item-title'>$Product </span> = {product.title}</li>
-                        <li><span className='search-history__item-title'>$Price </span> = {product.price}</li>
-                        <li><span className='search-history__item-title'>$Brand </span> = {product.brand}</li>
-                    </ul>
-
-                </div>
-                
-            ))
+            )).reverse()
         }
       </div>
 
