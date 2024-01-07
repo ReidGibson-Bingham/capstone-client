@@ -111,7 +111,7 @@ const Terminal = (props) => {
 
             setProductData(sortedProductData);
   
-            console.log("the response from the server: ", sortedProductData);
+            // console.log("the response from the server: ", sortedProductData);
         } catch (error) {
             console.log("error fetching data: ", error);
         }
@@ -130,10 +130,9 @@ const Terminal = (props) => {
   }, [output]);
 
   const handleSave = async () => {
-    const favouriteId = { favouriteId: selectedProduct.id};
-    console.log("favourite id: ", favouriteId);
+    const favouritePostData = { favouriteId: selectedProduct.id};
     try {   
-        const response = await axios.post('http://localhost:8080/api/users/favourites/',favouriteId);
+        const response = await axios.post('http://localhost:8080/api/users/favourites/', favouritePostData);
         if (response.status === 201) {
             console.log("successfully saved new favourite: ", response);
             closeModal();
@@ -167,7 +166,7 @@ const Terminal = (props) => {
 
                     </img>
 
-                    <ul className='results__item-info'>
+                    <ul className='results__item-info' onClick={() => openModal(product)}>
                         <li><span className='results__item-title'>$Product </span> = {product.title}</li>
                         <li><span className='results__item-title'>$Price </span> = {product.price}</li>
                         <li><span className='results__item-title'>$Brand </span> = {product.brand}</li>

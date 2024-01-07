@@ -1,5 +1,7 @@
 @import './../../styles/partials/mixins';
 
+
+
 .search-history {
     font-family: "Courier New", Courier, monospace;
     background-color: #000;
@@ -35,12 +37,23 @@
         overflow: auto; /* Add this line to add a scrollbar when content exceeds max-height */
     }
 
+    &__title {
+        display: flex;
+        justify-content: center;
+    }
+
     &__item {
         display: flex;
         flex-direction: row;
         align-items: center;  // Add this to vertically center the content
-        padding: 1rem;
+        padding: 0.5rem;
+        list-style-type: '$';
+        text-decoration: none;
         // border: 2px dotted #fff; 
+
+        &:hover{
+            background-color: rgba(0, 128, 0, 0.227);
+        }
     }
 
     &__item-img {

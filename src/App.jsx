@@ -17,11 +17,11 @@ function App() {
       <BrowserRouter>
         <Header/>
         <Routes>
-          <Route path="/" element={<Home/>} />
+          <Route path="/home" element={<Home/>} />
           <Route path="/favourites" element={<Favourites/>} />
           <Route path="/history" element={<SearchHistory/>} />
         </Routes>
-        <Header/>
+        {/* <Header/> */}
       </BrowserRouter>
     </>
   )

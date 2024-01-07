@@ -165,7 +165,7 @@ const FavouritesList = (props) => {
 
                     </img>
 
-                    <ul className='favourites-list__item-info'>
+                    <ul className='favourites-list__item-info' onClick={() => openModal(product)}>
                         <li><span className='favourites-list__item-title'>$Product </span> = {product.title}</li>
                         <li><span className='favourites-list__item-title'>$Price </span> = {product.price}</li>
                         <li><span className='favourites-list__item-title'>$Brand </span> = {product.brand}</li>
