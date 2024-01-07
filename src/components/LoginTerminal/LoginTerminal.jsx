@@ -79,33 +79,34 @@ const LoginTerminal = (props) => {
     };
 
   return (
-    <div className="search">
-      <div className="inputs-container">
-        <div className='input-container'>
-            <span className="prompt">Email:{isEmailInputFocused ? '>' : '$'}</span>
-            <input
-            type="text"
-            name="search"
-            value={emailInput}
-            onChange={handleEmailInputChange}
-            onKeyPress={handleEmailEnter}
-            onFocus={() => setIsEmailInputFocused(false)}
-            onBlur={() => setIsEmailInputFocused(false)}
-            />
+    <div className="login-terminal">
+        <h1 className='login-terminal__title'>$HapiCapi</h1>
+        <div className="inputs-container">
+            <div className='input-container'>
+                <span className="prompt">Email:{isEmailInputFocused ? '>' : '$'}</span>
+                <input
+                type="text"
+                name="search"
+                value={emailInput}
+                onChange={handleEmailInputChange}
+                onKeyPress={handleEmailEnter}
+                onFocus={() => setIsEmailInputFocused(false)}
+                onBlur={() => setIsEmailInputFocused(false)}
+                />
+            </div>
+            <div className='input-container'>
+                <span className="prompt">Password:{isPasswordInputFocused ? '>' : '$'}</span>
+                <input
+                type="text"
+                name="search"
+                value={passwordInput}
+                onChange={handlePasswordInputChange}
+                onKeyPress={handlePasswordEnter}
+                onFocus={() => setIsPasswordInputFocused(false)}
+                onBlur={() => setIsPasswordInputFocused(false)}
+                />
+            </div>
         </div>
-        <div className='input-container'>
-            <span className="prompt">Password:{isPasswordInputFocused ? '>' : '$'}</span>
-            <input
-            type="text"
-            name="search"
-            value={passwordInput}
-            onChange={handlePasswordInputChange}
-            onKeyPress={handlePasswordEnter}
-            onFocus={() => setIsPasswordInputFocused(false)}
-            onBlur={() => setIsPasswordInputFocused(false)}
-            />
-        </div>
-      </div>
     </div>
   );
 };

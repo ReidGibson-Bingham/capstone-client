@@ -1,6 +1,6 @@
 @import './../../styles/partials/mixins';
 
-.search {
+.login-terminal {
 
     position: relative;
     font-family: "Courier New", Courier, monospace;
@@ -18,7 +18,7 @@
     // background: url('./../../assets/noise/old-tv-glitch-vhs-rewind-fuzzy-grain-mov-1854328-high_0014.avif') center center no-repeat;
     // background: url('./../../assets/noise/bad-tracking-vhs-noise-footage-096624524_iconl.webp') center center no-repeat rgba(0, 0, 0, 0.891);
     background-size: cover;
-    border: 5px dashed rgb(83 0 128 / 43%);
+    border: 5px dashed rgba(83, 0, 128, 0.583);
 
    
 
@@ -34,6 +34,24 @@
     margin: 1rem;
     /* margin-top: 50px; */
     overflow: hidden;
+
+    position: absolute; // Set the position of the terminal to absolute
+    top: 50%;           // Adjust top position as needed
+    left: 50%;          // Adjust left position as needed
+    transform: translate(-50%, -50%); // Center the terminal
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;    
+  }
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border: 2px dotted #ffffff6b;
+    margin: 0rem 5rem;
   }
 
 }
@@ -48,18 +66,21 @@
   .inputs-container {
     display: flex;
     flex-direction: column;
-    border-bottom: 1px dashed green;
+    /* align-items: self-start; */
+    gap: 5rem;
+    padding: 0rem 2rem
   }
 
   .input-container {
     display: flex;
     flex-direction: row;
+    padding-bottom: 1rem;
   }
   
   .prompt {
     color: green;
     margin-right: 8px;
-    font-size: 48px;
+    font-size: 32px;
   }
   
   input {
@@ -70,6 +91,7 @@
     color: #fff;
     font-family: 'Courier New', Courier, monospace;
     font-size: 24px;
+    width: 100%;
   }
   
   .input {
