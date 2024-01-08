@@ -8,62 +8,64 @@ import formatString from './../../utils/formatString';
 
 Modal.setAppElement('#root');
 
-const ItemModal = ({ isOpen, onRequestClose, item, removeItem }) => {
+const ItemModal = ({ isOpen, onRequestClose, item, save }) => {
 
   const modalStyle = {
-    overlay: {
+      overlay: {
       backgroundColor: '#13182cc7',
-    }
+      }
   };
 
-  return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={onRequestClose}
-      contentLabel="Delete Confirmation"
-      className={{
-        base: 'deletion-modal',
-        afterOpen: 'deletion-modal__content',
-        beforeClose: 'deletion-modal__content',
-      }}
-      ClassName={{
-        base: 'deletion-modal__overlay',
-        afterOpen: 'deletion-modal__overlay',
-        beforeClose: 'deletion-modal__overlay',
-      }}
-      style={modalStyle}
-    >
-      <div>
-        <div className='deletion-modal__close-button-box'>
-          <button onClick={onRequestClose} className="deletion-modal__close-btn">
-            X
-          </button>
-        </div>
+return (
+  <Modal
+    isOpen={isOpen}
+    onRequestClose={onRequestClose}
+    contentLabel="Delete Confirmation"
+    className={{
+      base: 'item-modal',
+      afterOpen: 'item-modal__content',
+      beforeClose: 'item-modal__content',
+    }}
+    ClassName={{
+      base: 'item-modal__overlay',
+      afterOpen: 'item-modal__overlay',
+      beforeClose: 'item-modal__overlay',
+    }}
+    style={modalStyle}
+  >
+    
+      <div className='item-modal'>
 
-        <div className='deletion-modal__info-container'>
+          <div className='item-modal__content-container'>
 
-        <img className='deletion-modal__img' src={item.imagePath} alt='detailed product modal image'></img>
-        <div>
-            <h2 className='deletion-modal__title'>{formatString(item.title)}</h2>
-            <p className='deletion-modal__message'>price: {formatString(item.price)}</p>
-            <p className='deletion-modal__message'>brand: {formatString(item.brand)}</p>
-            <p className='deletion-modal__message-link'>where to buy / further info:
-                <a href={item.itemURL} target="_blank">
-                    {item.itemURL}
-                </a>
-            </p>
-        </div>
+              <img className='item-modal__img' src={item.imagePath} alt='detailed product modal image'></img>
+              <div className='item-modal__info-container'>
+                  <h2 className='item-modal__title'>{formatString(item.title)}</h2>
+                  <p className='item-modal__message'>price: {formatString(item.price)}</p>
+                  <p className='item-modal__message'>brand: {formatString(item.brand)}</p>
+                  <p className='item-modal__message-link'>where to buy / further info:
+                      <a href={item.itemURL} target="_blank">
+                          { item.itemURL}
+                      </a>
+                  </p>
 
-        </div>
+                  <div className='item-modal__button-box'>
+                      <button className='item-modal__button-delete' onClick={save} >$Save</button>
+                      <div className='item-modal__close-button-box'>
+                          <button onClick={onRequestClose} className="item-modal__close-btn">
+                              X
+                          </button>
+                      </div>
+                  </div>
 
-        <div className='deletion-modal__button-box'>
-          <button className='deletion-modal__button-delete' onClick={removeItem}>Remove</button>
-        </div>
+              </div>
+
+          </div>
 
       </div>
-      
-    </Modal>
-  );
+    
+  </Modal>
+);
 };
 
 const FavouritesList = (props) => {

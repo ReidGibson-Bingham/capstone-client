@@ -52,18 +52,13 @@ const ItemModal = ({ isOpen, onRequestClose, item, save }) => {
                     <div className='item-modal__button-box'>
                         <button className='item-modal__button-delete' onClick={save} >$Save</button>
                         <div className='item-modal__close-button-box'>
-                        <button onClick={onRequestClose} className="item-modal__close-btn">
-                            X
-                        </button>
+                            <button onClick={onRequestClose} className="item-modal__close-btn">
+                                X
+                            </button>
                         </div>
                     </div>
 
-                    
-
                 </div>
-
-                
-
 
             </div>
 
