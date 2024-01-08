@@ -93,7 +93,7 @@ const Search = (props) => {
         ))}
       </div>
       <div className="input-container">
-        <span className="prompt">{isInputFocused ? '>' : '$earch:'}</span>
+        <span className="prompt">Search:{isInputFocused ? '$' : '>'}</span>
         <input
           type="text"
           name="search"

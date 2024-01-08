@@ -4,65 +4,97 @@ import './FavouritesList.scss';
 
 import Modal from 'react-modal';
 import './ItemModal.scss';
+import formatString from './../../utils/formatString';
 
 Modal.setAppElement('#root');
 
-const ItemModal = ({ isOpen, onRequestClose, item, removeItem }) => {
+const ItemModal = ({ isOpen, onRequestClose, item, save }) => {
+
+  const [sizingValue, setSizingValue] = useState('');
+  const [descValue, setDescValue] = useState('');
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    if (name === 'sizing') {
+      setSizingValue(value);
+    } else if (name === 'description') {
+      setDescValue(value);
+    }
+  }
 
   const modalStyle = {
-    overlay: {
+      overlay: {
       backgroundColor: '#13182cc7',
-    }
+      }
   };
 
-  return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={onRequestClose}
-      contentLabel="Delete Confirmation"
-      className={{
-        base: 'deletion-modal',
-        afterOpen: 'deletion-modal__content',
-        beforeClose: 'deletion-modal__content',
-      }}
-      ClassName={{
-        base: 'deletion-modal__overlay',
-        afterOpen: 'deletion-modal__overlay',
-        beforeClose: 'deletion-modal__overlay',
-      }}
-      style={modalStyle}
-    >
-      <div>
-        <div className='deletion-modal__close-button-box'>
-          <button onClick={onRequestClose} className="deletion-modal__close-btn">
-            X
-          </button>
-        </div>
+return (
+  <Modal
+    isOpen={isOpen}
+    onRequestClose={onRequestClose}
+    contentLabel="Delete Confirmation"
+    className={{
+      base: 'item-modal',
+      afterOpen: 'item-modal__content',
+      beforeClose: 'item-modal__content',
+    }}
+    ClassName={{
+      base: 'item-modal__overlay',
+      afterOpen: 'item-modal__overlay',
+      beforeClose: 'item-modal__overlay',
+    }}
+    style={modalStyle}
+  >
+    
+      <div className='item-modal'>
 
-        <div className='deletion-modal__info-container'>
+          <div className='item-modal__content-container'>
 
-        <img className='deletion-modal__img' src={item.imagePath} alt='detailed product modal image'></img>
-        <div>
-            <h2 className='deletion-modal__title'>{item.title}</h2>
-            <p className='deletion-modal__message'>price: {item.price}</p>
-            <p className='deletion-modal__message'>brand: {item.brand}</p>
-            <p className='deletion-modal__message-link'>where to buy / further info:
-                <a href={item.itemURL} target="_blank">
-                    {item.itemURL}
-                </a>
-            </p>
-        </div>
+              <img className='item-modal__img' src={item.imagePath} alt='detailed product modal image'></img>
+              <div className='item-modal__info-container'>
+                  <h2 className='item-modal__title'>{formatString(item.title)}</h2>
+                  <p className='item-modal__message'>price: {formatString(item.price)}</p>
+                  <p className='item-modal__message'>brand: {formatString(item.brand)}</p>
+                  <p className='item-modal__message-link'>where to buy / further info:
+                      <a href={item.itemURL} target="_blank">
+                          { item.itemURL}
+                      </a>
+                  </p>
 
-        </div>
+                  <form className='item-modal__form-box'>
 
-        <div className='deletion-modal__button-box'>
-          <button className='deletion-modal__button-delete' onClick={removeItem}>Remove</button>
-        </div>
+                      <input
+                        type='text'
+                        name='sizing'
+                        value={sizingValue}
+                        onChange={handleInputChange}
+                        placeholder='enter size info'
+                      />
+
+                      <input
+                        type='text'
+                        name='description'
+                        value={descValue}
+                        onChange={handleInputChange}
+                        placeholder='enter description'
+                      />
+
+                      <button className='item-modal__button-save'>$Save</button>
+                      <div className='item-modal__close-button-box'>
+                          <button onClick={onRequestClose} className="item-modal__close-btn">
+                              X
+                          </button>
+                      </div>
+                  </form>
+
+              </div>
+
+          </div>
 
       </div>
-      
-    </Modal>
-  );
+    
+  </Modal>
+);
 };
 
 const FavouritesList = (props) => {
@@ -166,9 +198,9 @@ const FavouritesList = (props) => {
                     </img>
 
                     <ul className='favourites-list__item-info' onClick={() => openModal(product)}>
-                        <li><span className='favourites-list__item-title'>$Product </span> = {product.title}</li>
-                        <li><span className='favourites-list__item-title'>$Price </span> = {product.price}</li>
-                        <li><span className='favourites-list__item-title'>$Brand </span> = {product.brand}</li>
+                        <li><span className='favourites-list__item-title'>$Product </span> = {formatString(product.title)}</li>
+                        <li><span className='favourites-list__item-title'>$Price </span> = {formatString(product.price)}</li>
+                        <li><span className='favourites-list__item-title'>$Brand </span> = {formatString(product.brand)}</li>
                     </ul>
 
                     <ItemModal

@@ -1,18 +1,16 @@
 @import './../../styles/partials/colors';
 @import './../../styles/partials/mixins';
 
-.header {
+.footer {
 
     display: flex;
     padding: 1rem;
     padding-bottom: 3rem;
-    flex-direction: column;
+    // flex-direction: column;
     align-items: center;
     position: relative;
-
-    font-family: "Courier New", Courier, monospace;
     
-    background: linear-gradient(to bottom, rgba(58, 0, 128, 0), rgb(0, 0, 0)), url(/src/assets/noise/360_F_393065300_z0GbhH3qSS6kNIJoHRaA3BR4RfbutAyi.webp) center center no-repeat;
+    background: linear-gradient(to top, rgba(58, 0, 128, 0), rgb(0, 0, 0)), url(/src/assets/noise/360_F_393065300_z0GbhH3qSS6kNIJoHRaA3BR4RfbutAyi.webp) center center no-repeat;
     background-size: cover;
     background-color: #232940;
 
@@ -28,15 +26,18 @@
         z-index: 1;
     }
 
-    @include desktop {
-
+    &__contact-container {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 4rem;
     }
 
     &__logo-container {
-        padding: 0.5rem 0.5rem;
-        padding-bottom: 1rem; 
-        position: absolute;  
-        z-index: 2;
+        // padding: 0.5rem 0.5rem;
+        // padding-bottom: 1rem; 
+        // position: absolute;  
+        // z-index: 2;
+        // margin-bottom: 5rem;
     }
 
     &__logo {
@@ -46,8 +47,18 @@
 
         @include tablet {
             margin-top: 0rem;
-            margin-left: 5rem;
         }
+        
+    }
+
+    &__contact {
+        
+            list-style: none;  
+            color: green;
+            font-size: 1rem;
+            margin: 0;
+            padding: 0;
+            font-family: "Courier New", Courier, monospace;
         
     }
 

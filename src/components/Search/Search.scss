@@ -47,7 +47,6 @@
   
   .input-container {
     display: flex;
-    border-bottom: 1px dashed green;
   }
   
   .prompt {
@@ -67,21 +66,9 @@
   }
   
   .input {
-    color: #00ff00;
+    color: green;
   }
   
   .output {
     color: #fff;
   }
-
-  // ::after {
-  //   content: '';
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   right: 0;
-  //   bottom: 0;
-  //   z-index: -1;
-  //   background: url('./../../assets/noise/vhs-noise-real-analog-glitch-tape-rewind-1854378-high_0001.avif') center center no-repeat;
-  //   background-size: cover;
-  // }
