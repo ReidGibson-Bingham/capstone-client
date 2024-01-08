@@ -81,14 +81,14 @@ const Header = () => {
                         className={`header__pages-name ${isActiveHome('/') ? 'header__pages-name--active' : ''}`}
                         onClick={() => handlePageClick('/')}
                     >
-                        Home
+                        $Home
                     </NavLink>
                     <NavLink
                         to="/favourites"
                         className={`header__pages-name ${isActiveFavourites('/favourites') ? 'header__pages-name--active' : ''}`}
                         onClick={() => handlePageClick('favourites')}
                     >
-                        Favourites
+                        $Favourites
                     </NavLink>
 
                     <NavLink
@@ -97,7 +97,7 @@ const Header = () => {
 
                         <div className='header__logout-box'>
                             <p className='header__logout-image'>
-                                $
+                                $User
                             </p>
                         </div>
 
