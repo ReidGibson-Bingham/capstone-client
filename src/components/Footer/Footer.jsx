@@ -1,9 +1,9 @@
 import logo from './../../assets/logo/Screenshot 2024-01-07 at 11.46.34 PM.png'
-import './Header.scss';
+import './Footer.scss';
 import { useState, useRef, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
-const Header = () => {
+const Footer = () => {
 
     const [activePage, setActivePage] = useState(null);
     const location = useLocation();
@@ -46,7 +46,7 @@ const Header = () => {
 
         for (let i = 0; i < 360; i += 10) {
             const x = centerX + Math.cos(angle + i) * radius - 8;
-            const y = centerY + Math.sin(angle + i * 1) * radius * 0.65 + 10;
+            const y = centerY + Math.sin(angle + i * 3) * radius * 0.65 + 10;
             ctx.fillText('$', x, y);
         }
 
@@ -61,31 +61,34 @@ const Header = () => {
     }, []);
 
     return (
-        <header className="header">
-            
-                
+        <header className="footer">
 
-                <canvas ref={canvasRef} className="header__canvas">
-                    
-                </canvas>
+            <div className='footer__contact-container'>
 
-                <section className="header__logo-container">
+                <ul className='footer__contact'>
+                    <li>Email: Reidgibsonbingham@gmail.com</li>
+
+                </ul>
+
+                <section className="footer__logo-container">
                         <NavLink to="/home" className="link">
-                            <img className="header__logo" src={logo} alt='header logo image'/>
+                            <img className="footer__logo" src={logo} alt='footer logo image'/>
                         </NavLink>
-                    </section>
+                </section>
 
-                <section className="header__pages">
+            </div>
+            
+            {/* <section className="footer__pages">
                     <NavLink
                         to="/home"
-                        className={`header__pages-name ${isActiveHome('/') ? 'header__pages-name--active' : ''}`}
+                        className={`footer__pages-name ${isActiveHome('/') ? 'footer__pages-name--active' : ''}`}
                         onClick={() => handlePageClick('/')}
                     >
                         Home
                     </NavLink>
                     <NavLink
                         to="/favourites"
-                        className={`header__pages-name ${isActiveFavourites('/favourites') ? 'header__pages-name--active' : ''}`}
+                        className={`footer__pages-name ${isActiveFavourites('/favourites') ? 'footer__pages-name--active' : ''}`}
                         onClick={() => handlePageClick('favourites')}
                     >
                         Favourites
@@ -95,17 +98,22 @@ const Header = () => {
                         to="/login"
                     >
 
-                        <div className='header__logout-box'>
-                            <p className='header__logout-image'>
+                        <div className='footer__logout-box'>
+                            <p className='footer__logout-image'>
                                 $
                             </p>
                         </div>
 
                     </NavLink>
 
-                </section>
+                </section> */}
+
+                <canvas ref={canvasRef} className="footer__canvas">
+                    
+                </canvas>
+
         </header>
     )
 }
 
-export default Header;
+export default Footer;
