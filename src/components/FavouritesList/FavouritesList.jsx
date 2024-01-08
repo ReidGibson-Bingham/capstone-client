@@ -10,6 +10,18 @@ Modal.setAppElement('#root');
 
 const ItemModal = ({ isOpen, onRequestClose, item, save }) => {
 
+  const [sizingValue, setSizingValue] = useState('');
+  const [descValue, setDescValue] = useState('');
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    if (name === 'sizing') {
+      setSizingValue(value);
+    } else if (name === 'description') {
+      setDescValue(value);
+    }
+  }
+
   const modalStyle = {
       overlay: {
       backgroundColor: '#13182cc7',
@@ -49,14 +61,31 @@ return (
                       </a>
                   </p>
 
-                  <div className='item-modal__button-box'>
-                      <button className='item-modal__button-delete' onClick={save} >$Save</button>
+                  <form className='item-modal__form-box'>
+
+                      <input
+                        type='text'
+                        name='sizing'
+                        value={sizingValue}
+                        onChange={handleInputChange}
+                        placeholder='enter size info'
+                      />
+
+                      <input
+                        type='text'
+                        name='description'
+                        value={descValue}
+                        onChange={handleInputChange}
+                        placeholder='enter description'
+                      />
+
+                      <button className='item-modal__button-save'>$Save</button>
                       <div className='item-modal__close-button-box'>
                           <button onClick={onRequestClose} className="item-modal__close-btn">
                               X
                           </button>
                       </div>
-                  </div>
+                  </form>
 
               </div>
 

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import Header from "../../components/Header/Header";
-import Search from "../../components/Search/Search";
-import Terminal from "./../../components/Terminal/Terminal";
-import ResultList from "./../../components/ResultList/ResultList";
+import Header from "./../../components/Header/Header";
+import Search from "./../../components/Search/Search";
+import Terminal from "././../../components/Terminal/Terminal";
+import ResultList from "././../../components/ResultList/ResultList";
+import Footer from "./../../components/Footer/Footer";
 // import frame from './../../assets/border/png-transparent-corner-frame-divider-silver-filigree-wedding-invitations-formal-engagement-party.png'
 import './Home.scss';
 import { useLocation } from 'react-router-dom'
@@ -57,6 +58,7 @@ const Home = () => {
                     searchTerm={searchTerm}
                 />
             </main>
+            <Footer/>
         </>
         
     )

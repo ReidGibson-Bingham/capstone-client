@@ -72,11 +72,13 @@
 
     &__close-button-box {
         display: flex;
-        justify-content: flex-end;
+        justify-content: flex-start;
+        padding-bottom: 0.5rem;
     }
 
     &__content-container {
         display: flex;
+        justify-content: center;
         gap: 1rem;
         font-size: 24px;
         padding-left: 2rem;
@@ -136,7 +138,7 @@
         }
     }
 
-    &__button-box {
+    &__form-box {
         height: 70.5vh;
         display: flex;
         align-items: flex-end;
@@ -166,7 +168,7 @@
 
     }
 
-    &__button-delete {
+    &__button-save {
         
         color: white;
         background-color: black;

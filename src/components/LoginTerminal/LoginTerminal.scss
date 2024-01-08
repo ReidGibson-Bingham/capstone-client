@@ -67,6 +67,7 @@
     flex-direction: row;
     padding-bottom: 1rem;
     border-bottom: 2px dotted rgba(255, 255, 255, 0.4196078431);
+    overflow: hidden;
   }
 
   &__prompt {
@@ -84,6 +85,7 @@
     font-family: 'Courier New', Courier, monospace;
     font-size: 24px;
     width: 100%;
+    overflow: hidden;
   }
 
 }
