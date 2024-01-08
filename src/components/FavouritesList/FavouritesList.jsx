@@ -8,7 +8,7 @@ import formatString from './../../utils/formatString';
 
 Modal.setAppElement('#root');
 
-const ItemModal = ({ isOpen, onRequestClose, item, save }) => {
+const ItemModal = ({ isOpen, onRequestClose, item, removeItem }) => {
 
   const [sizingValue, setSizingValue] = useState('');
   const [descValue, setDescValue] = useState('');
@@ -81,7 +81,7 @@ return (
 
                       <button className='item-modal__button-save'>$Save</button>
                       <div className='item-modal__close-button-box'>
-                          <button onClick={onRequestClose} className="item-modal__close-btn">
+                          <button onClick={removeItem} className="item-modal__close-btn">
                              XRemove
                           </button>
                       </div>
@@ -205,7 +205,9 @@ const FavouritesList = (props) => {
 
                     <ItemModal
                         isOpen={isModalOpen && selectedProduct === product}
-                        onRequestClose={() => {handleRemove()}}
+                        onRequestClose={() => {
+                          setIsModalOpen(false);
+                        }}
                         item={product}
                         removeItem={handleRemove}
                     />
