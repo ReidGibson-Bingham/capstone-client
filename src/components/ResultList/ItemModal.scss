@@ -3,28 +3,28 @@
 // @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/breakpoints" as *;
 
-.deletion-modal {
+.item-modal {
 
-    width: 100%;
-    height: 100%;
-    padding: 1rem;
-    display: flex;
-    background: url('./../../assets/noise/Standard_Scientific_Camera_Starfield_450.jpg') center center no-repeat rgba(0, 0, 0, 0.891);
+    // width: 100%;
+    // height: 100%;
+    // padding: 1rem;
+    // display: flex;
+    // background: url('./../../assets/noise/Standard_Scientific_Camera_Starfield_450.jpg') center center no-repeat rgba(0, 0, 0, 0.891);
     
     @include tablet {
-        width: 75%;
-        height: 25rem;
-        margin-right: 10rem;
-        margin-left: 10rem;
-        margin-top: 11rem;
+        // width: 50rem;
+        // height: 30rem;
+        // margin-right: 10rem;
+        // margin-left: 10rem;
+        // margin-top: 11rem;
     }
 
     @include desktop {
-        width: 50%;
-        height: 37%;
-        margin-right: 25%;
-        margin-left: 25%;
-        margin-top: 11rem;
+        // width: 60rem;
+        // height: 30rem;
+        // margin-right: 10rem;
+        // margin-left: 15rem;
+        // margin-top: 11rem;
     }
 
     &__overlay {
@@ -43,18 +43,18 @@
   
     &__content {
 
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border: none;
-        background: none;
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        background: #fff;
-        border-radius: 0.25rem;
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        // right: 0;
+        // bottom: 0;
+        // border: none;
+        // background: none;
+        // display: flex;
+        // align-items: flex-start;
+        // justify-content: center;
+        // background: #fff;
+        // border-radius: 0.25rem;
         
 
     }
@@ -66,7 +66,7 @@
         background: none;
         border: none;
         font-size: 24px;
-        color: #333;
+        color: red;
 
     }
 
@@ -75,26 +75,43 @@
         justify-content: flex-end;
     }
 
-    &__info-container {
+    &__content-container {
         display: flex;
         gap: 1rem;
         font-size: 24px;
-        justify-content: space-between;
         padding-left: 2rem;
         padding-right: 2rem;
+        margin-top: 12rem;
     }
 
     &__img {
         max-height: 350px;
         max-width: 300px;
+        border: 2px dotted white;
+        padding: 1rem;
+    }
+
+    &__info-container {
+        border: 2px dotted white;
+        background: rgba(11, 43, 24, 0.84);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 1rem 2rem;
     }
 
     &__title {
 
         @include tablet {
-            padding-left: 2rem;
+    
+            font-size: 1.5rem;
+
         }
-        
+
+        @include desktop {
+            font-size: 2rem;
+        }
     }
 
     &__message {
@@ -103,7 +120,6 @@
 
         @include tablet {
             padding-top: 1rem;
-            padding-left: 2rem;
             padding-right: 2rem;
         }
 
@@ -116,7 +132,6 @@
 
         @include tablet {
             padding-top: 1rem;
-            padding-left: 2rem;
             padding-right: 2rem;
         }
     }
@@ -128,12 +143,13 @@
         justify-content: space-between;
 
         @include tablet {
-            height: 0vh;
+            height: 4vh;
             display: flex;
             align-items: flex-end;
-            justify-content: flex-end;
+            justify-content: space-between;
             gap: 1rem;
             padding-right: 2rem;
+            padding-top: 1rem;
         }
 
     }
@@ -151,19 +167,27 @@
     }
 
     &__button-delete {
+        
         color: white;
-        background-color: #C94515;
+        background-color: black;
         width: 47%;
         border-radius: 1rem;
         border: none;
         height: 2rem;
+        font-size: 1rem;
 
         @include tablet {
             
             width: 14%;
+            height: 3rem;
             
         }
 
     }
 
+}
+
+a {
+    text-decoration: none;
+    color: green;
 }

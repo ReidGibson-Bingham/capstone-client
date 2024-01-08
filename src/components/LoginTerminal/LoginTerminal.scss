@@ -54,16 +54,7 @@
     margin: 0rem 5rem;
   }
 
-}
-  
-  .output {
-    max-height: calc(100% - 40px);
-    margin-bottom: 16px;
-    overflow: auto; /* Add this line to add a scrollbar when content exceeds max-height */
-    font-size: 1.5rem;
-  }
-  
-  .inputs-container {
+  &__inputs-container {
     display: flex;
     flex-direction: column;
     /* align-items: self-start; */
@@ -71,19 +62,20 @@
     padding: 0rem 2rem
   }
 
-  .input-container {
+  &__input-container {
     display: flex;
     flex-direction: row;
     padding-bottom: 1rem;
+    border-bottom: 2px dotted rgba(255, 255, 255, 0.4196078431);
   }
-  
-  .prompt {
+
+  &__prompt {
     color: green;
     margin-right: 8px;
-    font-size: 32px;
+    font-size: 24px;
   }
-  
-  input {
+
+  &__input {
     flex: 1;
     background-color: transparent;
     border: none;
@@ -93,11 +85,12 @@
     font-size: 24px;
     width: 100%;
   }
+
+}
   
-  .input {
-    color: #00ff00;
-  }
   
-  .output {
-    color: #fff;
-  }
+//   .
+  
+//   .output {
+//     color: #fff;
+//   }

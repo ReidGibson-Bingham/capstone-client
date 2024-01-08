@@ -179,7 +179,7 @@ $ $$ $ $ $ $  $  $
     // Update the frame every 500 milliseconds
     const intervalId = setInterval(() => {
       setCurrentFrame((prevFrame) => (prevFrame + 1) % frames.length);
-      setFontSize(Math.floor(Math.random() * 64))
+      setFontSize(Math.floor(Math.random() * 34) + 30)
     }, 250);
 
     // Cleanup the interval on component unmount
@@ -207,7 +207,7 @@ $ $$ $ $ $ $  $  $
   return (
     <div className="terminal">
     <div 
-      className="output" 
+      className="terminal__output" 
       ref={outputContainerRef}
       style={{ fontFamily: 'monospace', fontSize: `${fontSize}px`, backgroundColor: '#000000' }}
     >
