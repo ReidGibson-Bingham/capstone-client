@@ -82,7 +82,7 @@ return (
                       <button className='item-modal__button-save'>$Save</button>
                       <div className='item-modal__close-button-box'>
                           <button onClick={onRequestClose} className="item-modal__close-btn">
-                              X
+                             XRemove
                           </button>
                       </div>
                   </form>
@@ -205,7 +205,7 @@ const FavouritesList = (props) => {
 
                     <ItemModal
                         isOpen={isModalOpen && selectedProduct === product}
-                        onRequestClose={() => {closeModal()}}
+                        onRequestClose={() => {handleRemove()}}
                         item={product}
                         removeItem={handleRemove}
                     />
