@@ -1,8 +1,9 @@
-# React + Vite
+### to do
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- turn history into it's own page
 
-Currently, two official plugins are available:
+- add a edit user page 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- finish edit favourite modal form
+
+- add output to the main page terminal component or get rid of it all together. 
