@@ -4,6 +4,7 @@ import './FavouritesList.scss';
 
 import Modal from 'react-modal';
 import './ItemModal.scss';
+import formatString from './../../utils/formatString';
 
 Modal.setAppElement('#root');
 
@@ -43,9 +44,9 @@ const ItemModal = ({ isOpen, onRequestClose, item, removeItem }) => {
 
         <img className='deletion-modal__img' src={item.imagePath} alt='detailed product modal image'></img>
         <div>
-            <h2 className='deletion-modal__title'>{item.title}</h2>
-            <p className='deletion-modal__message'>price: {item.price}</p>
-            <p className='deletion-modal__message'>brand: {item.brand}</p>
+            <h2 className='deletion-modal__title'>{formatString(item.title)}</h2>
+            <p className='deletion-modal__message'>price: {formatString(item.price)}</p>
+            <p className='deletion-modal__message'>brand: {formatString(item.brand)}</p>
             <p className='deletion-modal__message-link'>where to buy / further info:
                 <a href={item.itemURL} target="_blank">
                     {item.itemURL}
@@ -166,9 +167,9 @@ const FavouritesList = (props) => {
                     </img>
 
                     <ul className='favourites-list__item-info' onClick={() => openModal(product)}>
-                        <li><span className='favourites-list__item-title'>$Product </span> = {product.title}</li>
-                        <li><span className='favourites-list__item-title'>$Price </span> = {product.price}</li>
-                        <li><span className='favourites-list__item-title'>$Brand </span> = {product.brand}</li>
+                        <li><span className='favourites-list__item-title'>$Product </span> = {formatString(product.title)}</li>
+                        <li><span className='favourites-list__item-title'>$Price </span> = {formatString(product.price)}</li>
+                        <li><span className='favourites-list__item-title'>$Brand </span> = {formatString(product.brand)}</li>
                     </ul>
 
                     <ItemModal

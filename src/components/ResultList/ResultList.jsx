@@ -1,19 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './ResultList.scss';
-
 import Modal from 'react-modal';
 import './ItemModal.scss';
+import formatString from '../../utils/formatString';
 
 Modal.setAppElement('#root');
 
+
 const ItemModal = ({ isOpen, onRequestClose, item, save }) => {
 
-  const modalStyle = {
-    overlay: {
-      backgroundColor: '#13182cc7',
-    }
-  };
+    const modalStyle = {
+        overlay: {
+        backgroundColor: '#13182cc7',
+        }
+    };
 
   return (
     <Modal
@@ -44,7 +45,7 @@ const ItemModal = ({ isOpen, onRequestClose, item, save }) => {
 
             <img className='deletion-modal__img' src={item.imagePath} alt='detailed product modal image'></img>
             <div>
-                <h2 className='deletion-modal__title'>{item.title}</h2>
+                <h2 className='deletion-modal__title'>{formatString(item.title)}</h2>
                 <p className='deletion-modal__message'>price: {item.price}</p>
                 <p className='deletion-modal__message'>brand: {item.brand}</p>
                 <p className='deletion-modal__message-link'>where to buy / further info:
@@ -150,8 +151,8 @@ const Terminal = (props) => {
         {
             productData
                 .filter(product => {
-                    const formattedTitle = product.title.toLowerCase().replace(/\s/g, '');
-                    const formattedBrand = product.brand.toLowerCase().replace(/\s/g, '');
+                    const formattedTitle = formatString(product.title).toLowerCase().replace(/\s/g, '');
+                    const formattedBrand = formatString(product.brand).toLowerCase().replace(/\s/g, '');
                     const formattedSearchTerm = props.searchTerm.toLowerCase().replace(/\s/g, '');
                     return formattedTitle.includes(formattedSearchTerm) || formattedBrand.includes(formattedSearchTerm);
                 }) // Filter products based on the case-insensitive and space-insensitive search for title and brand
@@ -167,9 +168,9 @@ const Terminal = (props) => {
                     </img>
 
                     <ul className='results__item-info' onClick={() => openModal(product)}>
-                        <li><span className='results__item-title'>$Product </span> = {product.title}</li>
-                        <li><span className='results__item-title'>$Price </span> = {product.price}</li>
-                        <li><span className='results__item-title'>$Brand </span> = {product.brand}</li>
+                        <li><span className='results__item-title'>$Product </span> = {formatString(product.title)}</li>
+                        <li><span className='results__item-title'>$Price </span> = {formatString(product.price)}</li>
+                        <li><span className='results__item-title'>$Brand </span> = {formatString(product.brand)}</li>
                     </ul>
 
                     <ItemModal
