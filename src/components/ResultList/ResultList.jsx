@@ -95,6 +95,7 @@ const Terminal = (props) => {
         try {
             const response = await axios.get('http://localhost:8080/api/products');
             // Extract numeric values from the price strings
+            console.log("the response from the result list component: ", response);
             const extractNumber = (priceString) => {
                 const matches = priceString.match(/[0-9,]+[.]?[0-9]*/);
                 if (matches && matches.length > 0) {

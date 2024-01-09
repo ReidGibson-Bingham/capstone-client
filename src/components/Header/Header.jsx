@@ -24,6 +24,12 @@ const Header = () => {
         return isActive;
     };
 
+    const isActiveUser = () => {
+        const isActive = 
+            location.pathname === "/user";
+        return isActive;
+    }
+
     const canvasRef = useRef(null);
 
     useEffect(() => {
@@ -78,29 +84,26 @@ const Header = () => {
                 <section className="header__pages">
                     <NavLink
                         to="/home"
-                        className={`header__pages-name ${isActiveHome('/') ? 'header__pages-name--active' : ''}`}
+                        className={`header__pages-name-home ${isActiveHome('/') ? 'header__pages-name-home--active' : ''}`}
                         onClick={() => handlePageClick('/')}
                     >
                         $Home
                     </NavLink>
                     <NavLink
                         to="/favourites"
-                        className={`header__pages-name ${isActiveFavourites('/favourites') ? 'header__pages-name--active' : ''}`}
+                        className={`header__pages-name-favourites ${isActiveFavourites('/favourites') ? 'header__pages-name-favourites--active' : ''}`}
                         onClick={() => handlePageClick('favourites')}
                     >
                         $Favourites
                     </NavLink>
 
                     <NavLink
-                        to="/login"
+                        to="/user"
+                        className={`header__pages-name-user ${isActiveUser('/user') ? 'header__pages-name-user--active' : ''}`}
+                        onClick={() => handlePageClick('user')}
                     >
-
-                        <div className='header__logout-box'>
-                            <p className='header__logout-image'>
-                                $User
-                            </p>
-                        </div>
-
+                        
+                        $User                            
                     </NavLink>
 
                 </section>

@@ -214,7 +214,7 @@ const FavouritesList = (props) => {
 
                 </div>
                 
-            ))
+            )).reverse()
         }
       </div>
 
