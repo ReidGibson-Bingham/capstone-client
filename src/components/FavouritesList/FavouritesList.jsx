@@ -4,7 +4,7 @@ import './FavouritesList.scss';
 
 import Modal from 'react-modal';
 import './ItemModal.scss';
-import {formatString, convertGBPtoCAD} from '../../utils/utils';
+import {formatString, convertGBPtoCAD, convertYENtoCAD} from '../../utils/utils';
 
 Modal.setAppElement('#root');
 
