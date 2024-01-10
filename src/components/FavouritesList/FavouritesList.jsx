@@ -4,7 +4,7 @@ import './FavouritesList.scss';
 
 import Modal from 'react-modal';
 import './ItemModal.scss';
-import formatString from './../../utils/formatString';
+import {formatString, convertGBPtoCAD} from '../../utils/utils';
 
 Modal.setAppElement('#root');
 
@@ -53,7 +53,7 @@ return (
               <img className='item-modal__img' src={item.imagePath} alt='detailed product modal image'></img>
               <div className='item-modal__info-container'>
                   <h2 className='item-modal__title'>{formatString(item.title)}</h2>
-                  <p className='item-modal__message'>price: {formatString(item.price)}</p>
+                  <p className='item-modal__message'>price: {formatString(item.price).startsWith('£') ? convertGBPtoCAD(formatString(item.price)) : formatString(item.price).startsWith('￥') ? convertYENtoCAD(formatString(item.price)) : formatString(item.price)}</p>
                   <p className='item-modal__message'>brand: {formatString(item.brand)}</p>
                   <p className='item-modal__message-link'>where to buy / further info:
                       <a href={item.itemURL} target="_blank">
@@ -199,7 +199,7 @@ const FavouritesList = (props) => {
 
                     <ul className='favourites-list__item-info' onClick={() => openModal(product)}>
                         <li><span className='favourites-list__item-title'>$Product </span> = {formatString(product.title)}</li>
-                        <li><span className='favourites-list__item-title'>$Price </span> = {formatString(product.price)}</li>
+                        <li><span className='favourites-list__item-title'>$Price </span> = {formatString(product.price).startsWith('£') ? convertGBPtoCAD(formatString(product.price)) : formatString(product.price).startsWith('￥') ? convertYENtoCAD(formatString(product.price)) : formatString(product.price)}</li>
                         <li><span className='favourites-list__item-title'>$Brand </span> = {formatString(product.brand)}</li>
                     </ul>
 
