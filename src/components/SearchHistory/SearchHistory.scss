@@ -35,6 +35,16 @@
         max-height: calc(100% - 40px);
         margin-bottom: 16px;
         overflow: auto; /* Add this line to add a scrollbar when content exceeds max-height */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 1rem;
+        overflow: scroll;
+
+        @include desktop {
+            padding-top: 2rem;
+        }
+
     }
 
     &__title {
@@ -47,16 +57,29 @@
     }
 
     &__item {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center; // Add this to vertically center the content
-        padding: 0.5rem;
-        list-style-type: '$';
+
+        padding: 1rem;
+        list-style-type: "$";
         text-decoration: none;
-        // border: 2px dotted #fff; 
         color: green;
-        font-size: 32px;
+        font-size: 20px;
+
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center; // Add this to vertically center the content
+            padding: 0.5rem;
+            list-style-type: '$';
+            text-decoration: none;
+            color: green;
+            font-size: 24px;
+        }
+
+        @include desktop {
+            font-size: 32px;
+        }
+        
 
         &:hover{
             background-color: rgba(0, 128, 0, 0.227);

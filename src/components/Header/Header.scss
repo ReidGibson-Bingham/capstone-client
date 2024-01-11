@@ -23,7 +23,7 @@
 
     display: flex;
     padding: 1rem;
-    padding-bottom: 3rem;
+    padding-bottom: 1rem;
     flex-direction: column;
     align-items: center;
     position: relative;
@@ -44,6 +44,11 @@
     &__canvas {
         position: relative;
         z-index: 1;
+        padding-bottom: 1rem;
+
+        @include tablet {
+            padding-bottom: 0rem;
+        }
     }
 
     @include desktop {
@@ -113,12 +118,20 @@
             color: $white;
 
             &:before {
-                content: ">";
-                position: absolute;
-                top: 74%;
-                right: 31.5rem;
-                transform: translateY(-50%);
-                animation: slowFlash 2s infinite;
+
+                display: none;
+
+                @include tablet {
+
+                    display: flex;
+                    content: ">";
+                    position: absolute;
+                    top: 74%;
+                    right: 31.5rem;
+                    transform: translateY(-50%);
+                    animation: slowFlash 2s infinite;
+
+                }
                 
               }
 
@@ -151,12 +164,19 @@
 
             &:before {
 
-                content: ">";
-                position: absolute;
-                top: 74%;
-                right: 22.5rem;
-                transform: translateY(-50%);
-                animation: slowFlash 2s infinite;
+                display: none;
+
+                @include tablet {
+
+                    display: flex;
+                    content: ">";
+                    position: absolute;
+                    // top: 85%;
+                    right: 22.5rem;
+                    transform: translateY(-50%);
+                    animation: slowFlash 2s infinite;
+                    top: 74%;
+                }
                 
               }
 
@@ -189,12 +209,20 @@
 
             &:before {
 
-                content: ">";
-                position: absolute;
-                top: 74%;
-                right: 22.5rem;
-                transform: translateY(-50%);
-                animation: slowFlash 2s infinite;
+                display: none;
+
+
+                @include tablet {
+
+                    display: flex;
+                    content: ">";
+                    position: absolute;
+                    top: 74%;
+                    right: 8rem;
+                    transform: translateY(-50%);
+                    animation: slowFlash 2s infinite;
+
+                }
                 
               }
 

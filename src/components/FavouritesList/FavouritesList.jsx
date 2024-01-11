@@ -148,7 +148,6 @@ const FavouritesList = (props) => {
   }, [retriggerFetchData])
 
   useEffect(() => {
-    // Scroll to the bottom of the output container when output changes
     if (outputContainerRef.current) {
       outputContainerRef.current.scrollTop = outputContainerRef.current.scrollHeight;
     }
@@ -161,7 +160,7 @@ const FavouritesList = (props) => {
 
     try {
       const response = await axios.delete('http://localhost:8080/api/users/favourites/', {
-        data: favouriteId  // Include the data in the config object
+        data: favouriteId
     })
 
       if (response.status === 200) {

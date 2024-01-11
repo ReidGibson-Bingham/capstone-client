@@ -184,6 +184,7 @@ const Terminal = (props) => {
                 </div>
                 
             ))
+            .slice(0, 100)
         }
       </div>
 
