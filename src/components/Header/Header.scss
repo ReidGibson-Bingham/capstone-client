@@ -1,11 +1,29 @@
 @import './../../styles/partials/colors';
 @import './../../styles/partials/mixins';
 
+@keyframes slowFlash {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+}
+
 .header {
 
     display: flex;
     padding: 1rem;
-    padding-bottom: 3rem;
+    padding-bottom: 1rem;
     flex-direction: column;
     align-items: center;
     position: relative;
@@ -26,6 +44,11 @@
     &__canvas {
         position: relative;
         z-index: 1;
+        padding-bottom: 1rem;
+
+        @include tablet {
+            padding-bottom: 0rem;
+        }
     }
 
     @include desktop {
@@ -62,20 +85,21 @@
         @include tablet {
             justify-content: flex-end;
             padding: 0rem;
-            gap: 0.5rem;
+            gap: 5rem;
+            padding-top: 6rem;
+            font-size: 24px;
         }
 
     }
 
 
-    &__pages-name {
+    &__pages-name-home {
 
         border-radius: 1rem;
         display: flex;
         justify-content: center;
         color: $oultines;
         align-items: center;
-        font-size: 0.8125rem;
         width: 10.25rem;
         height: 2.25rem;
         text-decoration: none;
@@ -88,48 +112,121 @@
         @include tablet {
             width: 6.6875rem;
             height: 2.375rem;
-            font-size: 0.875rem;
         }
 
         &--active {
             color: $white;
-            background-color: green;
+
+            &:before {
+
+                display: none;
+
+                @include tablet {
+
+                    display: flex;
+                    content: ">";
+                    position: absolute;
+                    top: 74%;
+                    right: 31.5rem;
+                    transform: translateY(-50%);
+                    animation: slowFlash 2s infinite;
+
+                }
+                
+              }
+
         }
     }
 
-    &__logout-box {
-        // color: white;
-        // border: 2px solid white;
-        // border-radius: 50%;
-    }
+    &__pages-name-favourites {
 
-    &__logout-image {
-        display: 'inline-block';
-        border-radius: 80px;
-        border: 2px solid white;
-        // transform: rotate(90deg);
-        font-size: 16px;
-        color: white;
-        padding: 0.5rem;
+        border-radius: 1rem;
+        display: flex;
+        justify-content: center;
+        color: $oultines;
+        align-items: center;
+        width: 10.25rem;
+        height: 2.25rem;
+        text-decoration: none;
 
         &:hover {
-            background-color: green;
-            color: white;
-            border: 2px solid black;
+            text-decoration: underline;
+            color: $white;
         }
 
-        &:hover:before {
-            content: 'logout?';
-            font-size: 24px;
-            position: absolute;
-            top: 10px;
-            // left: 50%;
-            // bottom: 0px;
-            right: 10px;
-            // transform: translate(-130%, -90%); 
-            // transform: rotate(-90deg);
-            /* Center the text within the circle */
-            // white-space: nowrap; /* Prevent text from wrapping */
+        @include tablet {
+            width: 6.6875rem;
+            height: 2.375rem;
+        }
+
+        &--active {
+            color: $white;
+
+            &:before {
+
+                display: none;
+
+                @include tablet {
+
+                    display: flex;
+                    content: ">";
+                    position: absolute;
+                    // top: 85%;
+                    right: 22.5rem;
+                    transform: translateY(-50%);
+                    animation: slowFlash 2s infinite;
+                    top: 74%;
+                }
+                
+              }
+
         }
     }
+
+    &__pages-name-user {
+
+        border-radius: 1rem;
+        display: flex;
+        justify-content: center;
+        color: $oultines;
+        align-items: center;
+        width: 10.25rem;
+        height: 2.25rem;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+            color: $white;
+        }
+
+        @include tablet {
+            width: 6.6875rem;
+            height: 2.375rem;
+        }
+
+        &--active {
+            color: $white;
+
+            &:before {
+
+                display: none;
+
+
+                @include tablet {
+
+                    display: flex;
+                    content: ">";
+                    position: absolute;
+                    top: 74%;
+                    right: 8rem;
+                    transform: translateY(-50%);
+                    animation: slowFlash 2s infinite;
+
+                }
+                
+              }
+
+        }
+    }
+
 }

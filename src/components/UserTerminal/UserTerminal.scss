@@ -1,0 +1,121 @@
+@import './../../styles/partials/mixins';
+
+.user-terminal {
+
+    position: relative;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1.5rem;
+    background-color: #000;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 60vw;
+    height: 35vh;
+    margin: 1rem 0rem;
+    margin-top: 3rem;
+    overflow: hidden;
+    background-size: cover;
+    border: 5px dashed rgba(83, 0, 128, 0.583);
+    margin-top: 1rem;
+    height: 40rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+   
+
+  @include tablet {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1rem;
+    background-color: #000;
+    color: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    width: 50vw;
+    height: 70vh;
+    margin: 1rem;
+    /* margin-top: 50px; */
+    overflow: hidden;
+
+    position: absolute; // Set the position of the terminal to absolute
+    top: 50%;           // Adjust top position as needed
+    left: 50%;          // Adjust left position as needed
+    transform: translate(-50%, -50%); // Center the terminal
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;    
+    margin-top: 10rem;
+    gap: 5rem;
+  }
+
+  @include desktop {
+    width: 40vw
+  }
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border: 2px dotted #ffffff6b;
+    margin: 0rem 5rem;
+    font-size: 32px;
+
+    @include tablet {
+        font-size: 2rem;
+    }
+  }
+
+  &__inputs-container {
+    display: flex;
+    flex-direction: column;
+    /* align-items: self-start; */
+    gap: 5rem;
+    padding: 0rem 2rem
+  }
+
+  &__input-container {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 1rem;
+    border-bottom: 2px dotted rgba(255, 255, 255, 0.4196078431);
+    overflow: hidden;
+  }
+
+  &__prompt {
+    color: green;
+    margin-right: 8px;
+    font-size: 24px;
+  }
+
+  &__input {
+    flex: 1;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 24px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__button-box {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+
+    @include tablet {
+        font-size: 2rem;
+    }
+  }
+
+}
+  
+  
+//   .
+  
+//   .output {
+//     color: #fff;
+//   }

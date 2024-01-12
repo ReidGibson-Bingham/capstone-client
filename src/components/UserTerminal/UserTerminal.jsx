@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './LoginTerminal.scss';
+import './UserTerminal.scss';
 
 
-const LoginTerminal = (props) => {
+const UserTerminal = (props) => {
 
     const [emailInput, setEmailInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
@@ -78,12 +78,16 @@ const LoginTerminal = (props) => {
         setIsPasswordInputFocused(false);
     };
 
+    const handleLogout = () => {
+        navigate('/login')
+    }
+
   return (
-    <div className="login-terminal">
-        <h1 className='login-terminal__title'>$HapiCapi</h1>
-        <div className="login-terminal__inputs-container">
-            <div className='login-terminal__input-container'>
-                <span className="login-terminal__prompt">Email:{isEmailInputFocused ? '>' : '$'}</span>
+    <div className="user-terminal">
+        <h1 className='user-terminal__title'>$HapiCapi</h1>
+        <div className="user-terminal__inputs-container">
+            <div className='user-terminal__input-container'>
+                <span className="user-terminal__prompt">Email:{isEmailInputFocused ? '>' : '$'}</span>
                 <input
                     className=''
                     type="text"
@@ -95,11 +99,37 @@ const LoginTerminal = (props) => {
                     onBlur={() => setIsEmailInputFocused(false)}
                 />
             </div>
-            <div className='login-terminal__input-container'>
-                <span className="login-terminal__prompt">Password:{isPasswordInputFocused ? '>' : '$'}</span>
+            <div className='user-terminal__input-container'>
+                <span className="user-terminal__prompt">Username:{isPasswordInputFocused ? '>' : '$'}</span>
                 <input
-                    className='login-terminal__input'
-                    type="password"
+                    className='user-terminal__input'
+                    type="text"
+                    name="search"
+                    value={passwordInput}
+                    onChange={handlePasswordInputChange}
+                    onKeyPress={handlePasswordEnter}
+                    onFocus={() => setIsPasswordInputFocused(false)}
+                    onBlur={() => setIsPasswordInputFocused(false)}
+                />
+            </div>
+            <div className='user-terminal__input-container'>
+                <span className="user-terminal__prompt">Password:{isPasswordInputFocused ? '>' : '$'}</span>
+                <input
+                    className='user-terminal__input'
+                    type="text"
+                    name="search"
+                    value={passwordInput}
+                    onChange={handlePasswordInputChange}
+                    onKeyPress={handlePasswordEnter}
+                    onFocus={() => setIsPasswordInputFocused(false)}
+                    onBlur={() => setIsPasswordInputFocused(false)}
+                />
+            </div>
+            <div className='user-terminal__input-container'>
+                <span className="user-terminal__prompt">Password Confirm:{isPasswordInputFocused ? '>' : '$'}</span>
+                <input
+                    className='user-terminal__input'
+                    type="text"
                     name="search"
                     value={passwordInput}
                     onChange={handlePasswordInputChange}
@@ -109,8 +139,12 @@ const LoginTerminal = (props) => {
                 />
             </div>
         </div>
+        <div className='user-terminal__button-box'>
+            <p>$Delete</p>
+            <p onClick={handleLogout}>$Logout</p>
+        </div>
     </div>
   );
 };
 
-export default LoginTerminal;
+export default UserTerminal;

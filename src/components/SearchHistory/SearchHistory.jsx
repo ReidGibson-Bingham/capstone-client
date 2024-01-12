@@ -43,6 +43,7 @@ const SearchHistory = (props) => {
         
         {
             searchHistoryData
+                .slice(-100)
                 .map((searchTerm, index) => (
 
                   <NavLink 
@@ -62,7 +63,7 @@ const SearchHistory = (props) => {
 
                   </NavLink>
                 
-            )).reverse()
+            ))
         }
       </div>
 

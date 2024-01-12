@@ -4,11 +4,11 @@ import './FavouritesList.scss';
 
 import Modal from 'react-modal';
 import './ItemModal.scss';
-import formatString from './../../utils/formatString';
+import {formatString, convertGBPtoCAD, convertYENtoCAD} from '../../utils/utils';
 
 Modal.setAppElement('#root');
 
-const ItemModal = ({ isOpen, onRequestClose, item, save }) => {
+const ItemModal = ({ isOpen, onRequestClose, item, removeItem }) => {
 
   const [sizingValue, setSizingValue] = useState('');
   const [descValue, setDescValue] = useState('');
@@ -53,7 +53,7 @@ return (
               <img className='item-modal__img' src={item.imagePath} alt='detailed product modal image'></img>
               <div className='item-modal__info-container'>
                   <h2 className='item-modal__title'>{formatString(item.title)}</h2>
-                  <p className='item-modal__message'>price: {formatString(item.price)}</p>
+                  <p className='item-modal__message'>price: {formatString(item.price).startsWith('£') ? convertGBPtoCAD(formatString(item.price)) : formatString(item.price).startsWith('￥') ? convertYENtoCAD(formatString(item.price)) : formatString(item.price)}</p>
                   <p className='item-modal__message'>brand: {formatString(item.brand)}</p>
                   <p className='item-modal__message-link'>where to buy / further info:
                       <a href={item.itemURL} target="_blank">
@@ -81,7 +81,7 @@ return (
 
                       <button className='item-modal__button-save'>$Save</button>
                       <div className='item-modal__close-button-box'>
-                          <button onClick={onRequestClose} className="item-modal__close-btn">
+                          <button onClick={removeItem} className="item-modal__close-btn">
                              XRemove
                           </button>
                       </div>
@@ -148,7 +148,6 @@ const FavouritesList = (props) => {
   }, [retriggerFetchData])
 
   useEffect(() => {
-    // Scroll to the bottom of the output container when output changes
     if (outputContainerRef.current) {
       outputContainerRef.current.scrollTop = outputContainerRef.current.scrollHeight;
     }
@@ -161,7 +160,7 @@ const FavouritesList = (props) => {
 
     try {
       const response = await axios.delete('http://localhost:8080/api/users/favourites/', {
-        data: favouriteId  // Include the data in the config object
+        data: favouriteId
     })
 
       if (response.status === 200) {
@@ -199,20 +198,22 @@ const FavouritesList = (props) => {
 
                     <ul className='favourites-list__item-info' onClick={() => openModal(product)}>
                         <li><span className='favourites-list__item-title'>$Product </span> = {formatString(product.title)}</li>
-                        <li><span className='favourites-list__item-title'>$Price </span> = {formatString(product.price)}</li>
+                        <li><span className='favourites-list__item-title'>$Price </span> = {formatString(product.price).startsWith('£') ? convertGBPtoCAD(formatString(product.price)) : formatString(product.price).startsWith('￥') ? convertYENtoCAD(formatString(product.price)) : formatString(product.price)}</li>
                         <li><span className='favourites-list__item-title'>$Brand </span> = {formatString(product.brand)}</li>
                     </ul>
 
                     <ItemModal
                         isOpen={isModalOpen && selectedProduct === product}
-                        onRequestClose={() => {handleRemove()}}
+                        onRequestClose={() => {
+                          setIsModalOpen(false);
+                        }}
                         item={product}
                         removeItem={handleRemove}
                     />
 
                 </div>
                 
-            ))
+            )).reverse()
         }
       </div>
 

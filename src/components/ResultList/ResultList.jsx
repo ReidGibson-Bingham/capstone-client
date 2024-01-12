@@ -3,10 +3,10 @@ import axios from 'axios';
 import './ResultList.scss';
 import Modal from 'react-modal';
 import './ItemModal.scss';
-import formatString from '../../utils/formatString';
+
+import { formatString, convertGBPtoCAD, convertYENtoCAD } from './../../utils/utils.js';
 
 Modal.setAppElement('#root');
-
 
 const ItemModal = ({ isOpen, onRequestClose, item, save }) => {
 
@@ -41,7 +41,7 @@ const ItemModal = ({ isOpen, onRequestClose, item, save }) => {
                 <img className='item-modal__img' src={item.imagePath} alt='detailed product modal image'></img>
                 <div className='item-modal__info-container'>
                     <h2 className='item-modal__title'>{formatString(item.title)}</h2>
-                    <p className='item-modal__message'>price: {formatString(item.price)}</p>
+                    <p className='item-modal__message'>price: {formatString(item.price).startsWith('£') ? convertGBPtoCAD(formatString(item.price)) : formatString(item.price).startsWith('￥') ? convertYENtoCAD(formatString(item.price)) : formatString(item.price)}</p>
                     <p className='item-modal__message'>brand: {formatString(item.brand)}</p>
                     <p className='item-modal__message-link'>where to buy / further info:
                         <a href={item.itemURL} target="_blank">
@@ -95,6 +95,7 @@ const Terminal = (props) => {
         try {
             const response = await axios.get('http://localhost:8080/api/products');
             // Extract numeric values from the price strings
+            console.log("the response from the result list component: ", response);
             const extractNumber = (priceString) => {
                 const matches = priceString.match(/[0-9,]+[.]?[0-9]*/);
                 if (matches && matches.length > 0) {
@@ -169,7 +170,7 @@ const Terminal = (props) => {
 
                     <ul className='results__item-info' onClick={() => openModal(product)}>
                         <li><span className='results__item-title'>$Product </span> = {formatString(product.title)}</li>
-                        <li><span className='results__item-title'>$Price </span> = {formatString(product.price)}</li>
+                        <li><span className='results__item-title'>$Price </span> = {formatString(product.price).startsWith('£') ? convertGBPtoCAD(formatString(product.price)) : formatString(product.price).startsWith('￥') ? convertYENtoCAD(formatString(product.price)) : formatString(product.price)}</li>
                         <li><span className='results__item-title'>$Brand </span> = {formatString(product.brand)}</li>
                     </ul>
 
@@ -183,6 +184,7 @@ const Terminal = (props) => {
                 </div>
                 
             ))
+            .slice(0, 100)
         }
       </div>
 

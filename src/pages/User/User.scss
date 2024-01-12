@@ -1,0 +1,12 @@
+@import './../../styles/partials/colors';
+@import './../../styles/partials/mixins';
+
+.user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url(/src/assets/noise/vintage-black-white-noise-texture-abstract-splattered-background-vignette_488220-477.avif) center center no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
